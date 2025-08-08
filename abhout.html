@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Animated Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* BASE STYLES */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a1c2e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #1b384d, #0a1c2e);
+            animation: backgroundAnimation 20s ease infinite;
+        }
+
+        /* Your existing keyframes from the original code */
+        @keyframes gradientShift {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounceAndGlow {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-10px) scale(1.05); opacity: 0.9; }
+        }
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 15px #00f2fe, 0 0 30px #00f2fe, 0 0 60px #00f2fe;
+            animation: popIn 1s ease-out forwards;
+            letter-spacing: 2px;
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #a0a0a0;
+            max-width: 800px;
+            margin: 20px auto 0;
+            line-height: 1.6;
+            animation: fadeInUp 1.2s ease-out forwards 0.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        /* Your main content box */
+        .AboutMPSEDC {
+            animation: backgroundAnimation 15s ease infinite;
+            margin: 50px auto; /* Adjusted for better layout */
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 255, 0.2),
+                10px 10px 0px -5px #0a1c2e inset,
+                -10px -10px 0px -5px #0a1c2e inset;
+            transition: all 0.6s ease;
+            transform-style: preserve-3d;
+            animation: slideUp 1s ease-out;
+            transform: rotateX(5deg) rotateY(-5deg);
+            position: relative;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 50px;
+        }
+
+        /* Decorative corners */
+        .AboutMPSEDC::before,
+        .AboutMPSEDC::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, transparent 50%, #0a1c2e 50%);
+            bottom: -10px;
+            right: -10px;
+            z-index: -1;
+            transition: all 0.6s ease;
+        }
+        .AboutMPSEDC::after {
+            background: linear-gradient(-45deg, transparent 50%, #0a1c2e 50%);
+            top: -10px;
+            left: -10px;
+            right: auto;
+            bottom: auto;
+        }
+
+        .AboutMPSEDC:hover {
+            transform: rotateX(8deg) rotateY(8deg) scale(1.03);
+            box-shadow: 
+                0 35px 60px rgba(0, 255, 255, 0.4),
+                15px 15px 0px -5px #0a1c2e inset,
+                -15px -15px 0px -5px #0a1c2e inset;
+        }
+
+        /* Header Styling */
+        .AboutMPSEDC h1 {
+            font-size: 2.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-align: center;
+            background: linear-gradient(270deg, #f7971e, #ffd200, #00f2fe, #4facfe, #f7971e);
+            background-size: 800% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease-in-out infinite;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Paragraph Styling */
+        .AboutMPSEDC p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 0.6px;
+            text-transform: none;
+            text-align: justify;
+            background: linear-gradient(270deg, #93f9b9, #1d976c, #93f9b9);
+            background-size: 600% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease-in-out infinite;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .AboutMPSEDC p:hover {
+            letter-spacing: 1px;
+            transform: scale(1.01);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .AboutMPSEDC {
+                margin-top: 50px;
+                padding: 25px;
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            .AboutMPSEDC:hover {
+                 transform: scale(1.02);
+            }
+            .AboutMPSEDC h1 {
+                font-size: 2rem;
+            }
+            .AboutMPSEDC p {
+                font-size: 1rem;
+            }
+            .AboutMPSEDC::before, .AboutMPSEDC::after {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1 class="bouncy-glowing-text">Welcome to the future of design.</h1>
+        <p>A place where code and creativity collide to build experiences that feel alive.</p>
+    </div>
+
+    <div class="AboutMPSEDC">
+        <h1>About MPSEDC</h1>
+        <p>
+            The Madhya Pradesh State Electronics Development Corporation (MPSEDC) is a key player in driving the state's digital transformation. By focusing on e-governance, IT infrastructure, and skill development, MPSEDC works to bridge the digital divide and foster a technology-driven ecosystem. Its initiatives empower citizens and industries alike, ensuring that Madhya Pradesh remains at the forefront of the information age. Through innovative projects and strategic partnerships, the corporation is shaping a smarter, more connected future for the region.
+        </p>
+        <p>
+            This paragraph is a placeholder to show how multiple text blocks would look. The animations and styling are applied consistently, creating a cohesive and delightful reading experience. The subtle hover effects on the text make it feel interactive and alive, inviting the user to engage with the content.
+        </p>
+    </div>
+</body>
+</html>
