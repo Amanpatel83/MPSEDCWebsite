@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Image Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      width: 450px;
+      height: 400px;
+      transform-style: preserve-3d;
+      animation: rotate 20s infinite linear;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 380px;
+      height: 300px;
+      object-fit: fill;
+      left: 40px;
+      top: 50px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.1);
+      z-index: 1000;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel" id="carousel"></div>
+
+  <script>
+    const imagesData = [
+      { src: "/MPSEDC3/02072025113455Ujjain mahakumb.jpg", alt: "Ujjain New Hackathon" },
+      { src: "/MPSEDC3/21082020025434IT Park Bhopal 1.jpg", alt: "IT Park Bhopal" },
+      { src: "/MPSEDC3/21082020025632IT Park Indore 1.jpg", alt: "IT Park Indore" },
+      { src: "/MPSEDC3/22022025061215Gwalior Malanpur Banner.jpg", alt: "Gwalior Malanpur Banner" },
+      { src: "/MPSEDC3/22022025061244Indore Sinhasa Banner.jpg", alt: "Indore Sinhasa Banner" },
+      { src: "/MPSEDC3/010920200543162.jpg", alt: "Abstract gradient" },
+      { src: "/MPSEDC3/21082020025632IT Park Indore 1.jpg", alt: "Tech blend" },
+      { src: "/MPSEDC3/02072025113455Ujjain mahakumb.jpg", alt: "Mountain" },
+      { src: "/MPSEDC3/21082020025434IT Park Bhopal 1.jpg", alt: "City Night" },
+      { src: "/MPSEDC3/21082020025632IT Park Indore 1.jpg", alt: "Forest Path" },
+      { src: "/MPSEDC3/22022025061215Gwalior Malanpur Banner.jpg", alt: "Abstract" },
+      { src: "/MPSEDC3/22022025061244Indore Sinhasa Banner.jpg", alt: "Sunset" },
+    ];
+
+    const carousel = document.getElementById('carousel');
+    const total = imagesData.length;
+    const angleStep = 360 / total;
+    const radius = 700;
+
+    imagesData.forEach((imgData, i) => {
+      const img = document.createElement('img');
+      img.src = imgData.src;
+      img.alt = imgData.alt;
+
+      const angle = angleStep * i;
+      const rad = angle * (Math.PI / 180);
+      const x = Math.sin(rad) * radius;
+      const z = Math.cos(rad) * radius;
+
+      img.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${angle}deg)`;
+
+      carousel.appendChild(img);
+    });
+  </script>
+</body>
+</html>

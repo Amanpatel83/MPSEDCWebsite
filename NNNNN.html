@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPSedc - मध्यप्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम लिमिटेड</title>
+    
+    <!-- Tailwind CSS ko CDN se load kar rahe hain -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome icons ke liye -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for a consistent color scheme */
+        :root {
+            --primary-color: #003366; /* Deep blue for a professional look */
+            --secondary-color: #dbeafe; /* Light blue for accents */
+            --text-color: #334155;
+            --link-hover-color: #1e40af; /* A slightly darker blue on hover */
+            --border-color: #e2e8f0;
+        }
+
+        /* Inter font aur ek accha background color */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Halka neela-grey background */
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section ke liye background image aur overlay */
+        .hero-background {
+            background-image: url('https://placehold.co/1920x600/1e3a8a/ffffff?text=Digital+India');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 58, 138, 0.6); /* Blue overlay with transparency */
+            z-index: 1; /* Overlay ko content ke neeche rakhein */
+        }
+        
+        /* Saare text ko overlay ke upar dikhane ke liye */
+        .hero-background > * {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header Sections */
+        .site-header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .top-bar-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .top-bar a,
+        .top-bar button {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            padding: 0 0.5rem;
+            border-radius: 4px;
+        }
+
+        .top-bar a:hover,
+        .top-bar button:hover {
+            color: var(--secondary-color);
+        }
+
+        .font-size-controls button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .search-lang-controls input {
+            padding: 4px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: #fff;
+            color: #000;
+        }
+
+        /* Logo and Branding */
+        .logo-branding {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            padding: 16px;
+            background-color: #fff;
+            gap: 16px;
+        }
+
+        .logo-branding img {
+            height: 60px; /* Adjust as needed */
+        }
+
+        .main-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            background: var(--primary-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #navList > li {
+            position: relative;
+        }
+
+        #navList > li > a {
+            display: block;
+            padding: 16px 24px;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            white-space: nowrap; /* Prevent menu items from wrapping */
+        }
+
+        #navList > li > a:hover {
+            background-color: var(--link-hover-color);
+        }
+
+        .has-submenu > a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            list-style: none;
+            padding: 8px 0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .has-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        
+        /* Mobile Hamburger Menu */
+        .hamburger-menu {
+            display: none; /* Hide on desktop */
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        @media (min-width: 1024px) {
+            .logo-branding {
+                justify-content: space-between; /* Align to the sides on larger screens */
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .top-bar {
+                justify-content: center;
+            }
+            .top-bar-section {
+                gap: 0.5rem;
+                margin-bottom: 8px;
+            }
+            .search-lang-controls {
+                order: -1;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo-branding img:last-of-type {
+                display: none; /* Hide the second logo on mobile */
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                right: 1rem;
+            }
+        }
+
+        /* Mobile Sidebar */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .mobile-nav-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            max-width: 80%;
+            height: 100%;
+            background: #fff;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-nav-sidebar.open {
+            transform: translateX(0);
+        }
+
+        .close-btn {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            cursor: pointer;
+        }
+
+        .mobile-main-menu {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .mobile-main-menu li a {
+            display: block;
+            padding: 12px 0;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mobile-main-menu li:last-child a {
+            border-bottom: none;
+        }
+        
+        .mobile-main-menu .has-submenu > a {
+            justify-content: space-between;
+        }
+
+        .mobile-main-menu .dropdown-menu {
+            position: static; /* Disable absolute positioning */
+            display: none;
+            padding-left: 20px;
+            background: var(--secondary-color);
+        }
+
+        /* Improved Gallery CSS */
+        .main-gallery-area {
+            position: relative;
+            max-width: 1024px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .main-display {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Adjust height for a good visual */
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .main-display img.active-main {
+            opacity: 1;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .image-caption.active {
+            transform: translateY(0);
+        }
+        
+        .nav-button, #playPauseButton {
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 9999px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 20;
+        }
+
+        .nav-button:hover, #playPauseButton:hover {
+            background: rgba(0,0,0,0.8);
+            transform: scale(1.1);
+        }
+
+        .prev-button { left: 1rem; }
+        .next-button { right: 1rem; }
+        #playPauseButton {
+            top: 1rem;
+            right: 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+        }
+
+        .carousel-container {
+            max-width: 1024px;
+            margin: 1rem auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .carousel img.active {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-display {
+                height: 300px;
+            }
+            .nav-button, #playPauseButton {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="site-header sticky top-0 z-50 bg-white">
+        <!-- Top Bar with Accessibility & Utility Links -->
+        <div class="top-bar">
+            <div class="top-bar-section font-size-controls">
+                <button id="decrease" class="px-2 py-1 rounded-full text-xs">A–</button>
+                <button id="default" class="px-2 py-1 rounded-full text-xs">A</button>
+                <button id="increase" class="px-2 py-1 rounded-full text-xs">A+</button>
+            </div>
+            <div class="top-bar-section hidden md:flex">
+                <a href="#main-content"><i class="fas fa-universal-access mr-1"></i> मुख्य सामग्री पर जाएँ</a>
+                <a href="#navigation"><i class="fas fa-bars mr-1"></i> नेविगेशन पर जाएँ</a>
+            </div>
+            <div class="top-bar-section hidden md:flex">
+                <a href="#">IT Policy‑2023</a>
+                <a href="#">Security Audit Login</a>
+            </div>
+            <div class="top-bar-section search-lang-controls">
+                <div class="relative">
+                    <input type="text" placeholder="खोजें…" class="rounded-full pl-8 pr-3 py-1 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                </div>
+                <button class="text-white bg-gray-600 rounded-full px-4 py-1 text-sm">English</button>
+            </div>
+        </div>
+
+        <!-- Logo and Branding Section -->
+        <div class="logo-branding max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-4">
+                <img src="https://placehold.co/60x60/dbeafe/003366?text=LOGO" alt="Govt. of MP Logo" class="h-16 rounded-full" />
+                <div class="main-title">
+                    <h1 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900">
+                        मध्यप्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम लिमिटेड
+                    </h1>
+                    <div class="tagline text-sm md:text-base text-gray-600">
+                        (A Government of MP Undertaking)
+                    </div>
+                </div>
+            </a>
+            <img src="https://placehold.co/60x60/dbeafe/003366?text=India" alt="Digital India Logo" class="h-16 hidden lg:block" />
+            <button class="hamburger-menu" onclick="openMobileNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Main Navigation (Desktop) -->
+        <nav id="navigation" class="main-nav hidden lg:block">
+            <div class="max-w-7xl mx-auto">
+                <ul id="navList">
+                    <li><a href="#home"><i class="fas fa-home"></i> होम</a></li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="fas fa-building"></i> हमारे बारे में <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#about"><i class="fas fa-dot-circle"></i> उद्देश्य</a></li>
+                            <li><a href="#"><i class="fas fa-bullseye"></i> मिशन</a></li>
+                            <li><a href="#"><i class="fas fa-eye"></i> विजन</a></li>
+                            <li><a href="#"><i class="fas fa-users-cog"></i> निदेशक मंडल</a></li>
+                            <li><a href="#"><i class="fas fa-briefcase"></i> रिक्तियाँ</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="fas fa-scroll"></i> नीतियां और नियम <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fas fa-book-open"></i> IT नीति</a></li>
+                            <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> खरीद नियम</a></li>
+                            <li><a href="#"><i class="fas fa-balance-scale"></i> सेवा नियम</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> परिपत्र और आदेश</a></li>
+                    <li><a href="#"><i class="fas fa-gavel"></i> निविदाएं</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> संपर्क करें</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay & Sidebar -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-sidebar" id="mobileNavSidebar">
+        <div class="close-btn" onclick="closeMobileNav()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-main-menu">
+            <li><a href="#home" onclick="closeMobileNav()"><i class="fas fa-home"></i> होम</a></li>
+            <li class="has-submenu">
+                <a href="#"><i class="fas fa-building"></i> हमारे बारे में <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#about" onclick="closeMobileNav()"><i class="fas fa-dot-circle"></i> उद्देश्य</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-bullseye"></i> मिशन</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-eye"></i> विजन</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-users-cog"></i> निदेशक मंडल</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-briefcase"></i> रिक्तियाँ</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#"><i class="fas fa-scroll"></i> नीतियां और नियम <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-book-open"></i> IT नीति</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-file-invoice-dollar"></i> खरीद नियम</a></li>
+                    <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-balance-scale"></i> सेवा नियम</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-clipboard-list"></i> परिपत्र और आदेश</a></li>
+            <li><a href="#" onclick="closeMobileNav()"><i class="fas fa-gavel"></i> निविदाएं</a></li>
+            <li><a href="#contact" onclick="closeMobileNav()"><i class="fas fa-phone-alt"></i> संपर्क करें</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-background flex items-center justify-center text-center text-white py-24 sm:py-32">
+            <div class="max-w-4xl px-4 z-10">
+                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight mb-4">
+                    डिजिटल मध्यप्रदेश की ओर एक कदम
+                </h1>
+                <p class="text-lg sm:text-xl font-light opacity-90 mb-8">
+                    हम राज्य में आईटी और इलेक्ट्रॉनिक्स उद्योगों के विकास और e-governance को बढ़ावा देने के लिए प्रतिबद्ध हैं।
+                </p>
+            </div>
+        </section>
+        
+        <!-- Image Gallery/Slider Section -->
+        <section id="gallery" class="py-16 sm:py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="Gal mt-12">
+                    <div class="main-gallery-area">
+                        <div class="main-display">
+                            <button id="playPauseButton" onclick="toggleAutoScroll()" aria-label="Play or pause auto-scroll">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="nav-button prev-button" onclick="prevSlide()" aria-label="Previous image">⟨</button>
+                            <button class="nav-button next-button" onclick="nextSlide()" aria-label="Next image">⟩</button>
+                            <div class="image-caption" id="imageCaption"></div>
+                        </div>
+                    </div>
+                
+                    <div class="carousel-container">
+                        <div class="carousel" id="carousel"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="bg-white py-16 sm:py-24 px-4">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 border-b-4 border-blue-600 pb-2 inline-block">
+                        हमारे बारे में
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        मध्यप्रदेश राज्य इलेक्ट्रॉनिक्स विकास निगम (MPSedc) मध्यप्रदेश सरकार के विज्ञान और प्रौद्योगिकी विभाग के तहत एक पूर्ण स्वामित्व वाला उपक्रम है। हमारा गठन राज्य में सूचना प्रौद्योगिकी (IT) और इलेक्ट्रॉनिक्स (EHM / ESDM) उद्योगों को बढ़ावा देने, स्थापित करने और विकसित करने के लिए किया गया था।
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        हम e-governance परियोजनाओं को लागू करने के लिए नोडल एजेंसी के रूप में काम करते हैं, जिसका उद्देश्य सार्वजनिक सेवाओं के वितरण में सुधार करना है।
+                    </p>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://placehold.co/600x400/d1d5db/4b5563?text=About+Image" alt="About MPSedc" class="rounded-xl shadow-2xl w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="bg-gray-50 py-16 sm:py-24 px-4">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 border-b-4 border-blue-600 pb-2 inline-block">
+                    हमारी मुख्य सेवाएं
+                </h2>
+                <p class="mt-4 text-gray-600 text-lg">
+                    हम विभिन्न क्षेत्रों में सरकार को अत्याधुनिक समाधान और सहायता प्रदान करते हैं।
+                </p>
+                
+                <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4">
+                            <i class="fas fa-sitemap fa-2x"></i>
+                        </div>
+                        <h3 class="mt-4 text-2xl font-bold text-gray-900">e-Governance</h3>
+                        <p class="mt-2 text-gray-600">
+                            सरकार की सेवाओं को नागरिकों तक इलेक्ट्रॉनिक माध्यम से पहुँचाना।
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-4">
+                            <i class="fas fa-server fa-2x"></i>
+                        </div>
+                        <h3 class="mt-4 text-2xl font-bold text-gray-900">IT Infrastructure</h3>
+                        <p class="mt-2 text-gray-600">
+                            राज्य में IT पार्कों और डेटा सेंटरों का विकास।
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-yellow-100 text-yellow-600 mx-auto mb-4">
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                        <h3 class="mt-4 text-2xl font-bold text-gray-900">Digital Initiatives</h3>
+                        <p class="mt-2 text-gray-600">
+                            आधार, e-Office, और अन्य डिजिटल परियोजनाओं का कार्यान्वयन।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white py-16 sm:py-24 px-4">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 border-b-4 border-blue-600 pb-2 inline-block">
+                    हमसे संपर्क करें
+                </h2>
+                <p class="mt-4 text-gray-600 text-lg">
+                    किसी भी जानकारी या सहायता के लिए, हमसे संपर्क करें।
+                </p>
+                
+                <div class="mt-12 grid gap-8 md:grid-cols-2">
+                    <!-- Contact Info -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">संपर्क विवरण</h3>
+                        <p class="text-gray-700 mt-4">
+                            <strong class="font-semibold text-gray-900"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i>पता:</strong><br>
+                            MPSEDC Ltd., State IT Centre, 47-A, Arera Hills, Bhopal - 462011 (M.P.)
+                        </p>
+                        <p class="text-gray-700 mt-4">
+                            <strong class="font-semibold text-gray-900"><i class="fas fa-envelope mr-2 text-blue-600"></i>ईमेल:</strong><br>
+                            accounts@mpsedc.com
+                        </p>
+                        <p class="text-gray-700 mt-4">
+                            <strong class="font-semibold text-gray-900"><i class="fas fa-phone-alt mr-2 text-blue-600"></i>फ़ोन:</strong><br>
+                            0755-2518630
+                        </p>
+                    </div>
+
+                    <!-- Contact Form (Placeholder) -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">हमें संदेश भेजें</h3>
+                        <form action="#" method="POST" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">नाम</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">ईमेल</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">संदेश</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 transform hover:scale-105">
+                                संदेश भेजें
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4 text-center">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-sm">&copy; 2025 MPSedc. सभी अधिकार सुरक्षित।</p>
+            <div class="mt-4 flex flex-wrap justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200">गोपनीयता नीति</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200">नियम और शर्तें</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Functionality -->
+    <script>
+        // Mobile Menu Toggling
+        const mobileMenuButton = document.querySelector('.hamburger-menu');
+        const mobileNavSidebar = document.getElementById('mobileNavSidebar');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const closeBtn = document.querySelector('.close-btn');
+
+        function openMobileNav() {
+            mobileNavSidebar.classList.add('open');
+            mobileNavOverlay.style.display = 'block';
+        }
+
+        function closeMobileNav() {
+            mobileNavSidebar.classList.remove('open');
+            mobileNavOverlay.style.display = 'none';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileNav);
+        closeBtn.addEventListener('click', closeMobileNav);
+        mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+        // Mobile Dropdown Menu Toggling
+        document.querySelectorAll('.mobile-main-menu .has-submenu > a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const submenu = this.nextElementSibling;
+                if (submenu && submenu.classList.contains('dropdown-menu')) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                    this.querySelector('.fa-caret-down').classList.toggle('rotate-180');
+                }
+            });
+        });
+
+        // Font Size Controls for Accessibility
+        const bodyElement = document.body;
+        const decreaseFont = document.getElementById('decrease');
+        const defaultFont = document.getElementById('default');
+        const increaseFont = document.getElementById('increase');
+
+        const originalFontSize = 16; // Base font size in px
+        let currentFontSize = originalFontSize;
+
+        decreaseFont.addEventListener('click', () => {
+            currentFontSize = Math.max(12, currentFontSize - 2);
+            bodyElement.style.fontSize = `${currentFontSize}px`;
+        });
+
+        defaultFont.addEventListener('click', () => {
+            currentFontSize = originalFontSize;
+            bodyElement.style.fontSize = `${currentFontSize}px`;
+        });
+
+        increaseFont.addEventListener('click', () => {
+            currentFontSize = Math.min(24, currentFontSize + 2);
+            bodyElement.style.fontSize = `${currentFontSize}px`;
+        });
+
+        // Optional: Smooth scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Start of Image Gallery/Slider JavaScript
+        const carousel = document.getElementById("carousel");
+        const mainDisplay = document.querySelector(".main-display");
+        const playPauseButton = document.getElementById("playPauseButton");
+        const imageCaption = document.getElementById("imageCaption");
+        const prevButton = document.querySelector(".prev-button");
+        const nextButton = document.querySelector(".next-button");
+
+        let currentImageIndex = 0;
+        let autoScrollInterval;
+        let isAutoScrolling = true;
+
+        const imagesData = [
+            { src: "https://placehold.co/800x500/d1d5db/374151?text=Ujjain+Hackathon", alt: "Ujjain New Hackathon" },
+            { src: "https://placehold.co/800x500/d1d5db/374151?text=IT+Park+Bhopal", alt: "IT Park Bhopal" },
+            { src: "https://placehold.co/800x500/d1d5db/374151?text=IT+Park+Indore", alt: "IT Park Indore" },
+            { src: "https://placehold.co/800x500/d1d5db/374151?text=Data+Center+Launch", alt: "New Data Center Inauguration" },
+            { src: "https://placehold.co/800x500/d1d5db/374151?text=E-Governance+Workshop", alt: "E-Governance Workshop" },
+        ];
+
+        /**
+         * गैलरी और थंबनेल को डेटा से भरता है।
+         */
+        function populateGallery() {
+            imagesData.forEach((imageData, index) => {
+                // Main image element banayen
+                const mainImg = document.createElement("img");
+                mainImg.src = imageData.src;
+                mainImg.alt = imageData.alt;
+                mainImg.dataset.index = index;
+                mainDisplay.prepend(mainImg);
+
+                // Thumbnail image element banayen
+                const thumbImg = document.createElement("img");
+                thumbImg.src = imageData.src;
+                thumbImg.alt = `Thumbnail for ${imageData.alt}`;
+                thumbImg.dataset.index = index;
+                thumbImg.addEventListener('click', () => selectSlide(index));
+                carousel.appendChild(thumbImg);
+            });
+            // Initial image ko show karein
+            selectSlide(0);
+        }
+
+        /**
+         * सक्रिय स्लाइड को अपडेट करता है और थंबनेल को हाइलाइट करता है।
+         * @param {number} index - उस स्लाइड का इंडेक्स जिसे सक्रिय करना है।
+         */
+        function selectSlide(index) {
+            // Validate the index
+            if (index < 0 || index >= imagesData.length) return;
+
+            // Update current index
+            currentImageIndex = index;
+
+            // Hide all main images and captions
+            document.querySelectorAll('.main-display img').forEach(img => {
+                img.classList.remove('active-main');
+            });
+            imageCaption.classList.remove('active');
+
+            // Show the selected main image and caption
+            const activeMainImage = document.querySelector(`.main-display img[data-index='${index}']`);
+            if (activeMainImage) {
+                activeMainImage.classList.add('active-main');
+            }
+            
+            imageCaption.textContent = imagesData[index].alt;
+            imageCaption.classList.add('active');
+
+            // Update active thumbnail
+            document.querySelectorAll('.carousel img').forEach(img => {
+                img.classList.remove('active');
+            });
+            const activeThumb = document.querySelector(`.carousel img[data-index='${index}']`);
+            if (activeThumb) {
+                activeThumb.classList.add('active');
+            }
+
+            // Scroll carousel to show the active thumbnail
+            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        /**
+         * अगली स्लाइड पर जाता है।
+         */
+        function nextSlide() {
+            const nextIndex = (currentImageIndex + 1) % imagesData.length;
+            selectSlide(nextIndex);
+        }
+
+        /**
+         * पिछली स्लाइड पर जाता है।
+         */
+        function prevSlide() {
+            const prevIndex = (currentImageIndex - 1 + imagesData.length) % imagesData.length;
+            selectSlide(prevIndex);
+        }
+
+        /**
+         * ऑटो-स्क्रॉल को शुरू या बंद करता है।
+         */
+        function toggleAutoScroll() {
+            if (isAutoScrolling) {
+                clearInterval(autoScrollInterval);
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+                isAutoScrolling = false;
+            } else {
+                autoScrollInterval = setInterval(nextSlide, 5000); // 5 seconds
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+                isAutoScrolling = true;
+            }
+        }
+
+        // Event listeners for navigation buttons
+        prevButton.addEventListener('click', () => {
+            // If user manually navigates, pause the auto-scroll
+            if (isAutoScrolling) toggleAutoScroll();
+            prevSlide();
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (isAutoScrolling) toggleAutoScroll();
+            nextSlide();
+        });
+
+        // Initialize the gallery on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            populateGallery();
+            // Start auto-scrolling
+            autoScrollInterval = setInterval(nextSlide, 5000); // 5 seconds
+        });
+    </script>
+</body>
+</html>

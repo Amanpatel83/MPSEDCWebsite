@@ -1,0 +1,2363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MPSEDC - Projects, Verticals & Updates</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+
+  <style>
+    
+       /* CSS Variables */
+        :root {
+            --dark-blue: #0A2F50; /* Deeper blue */
+            --mid-blue: #1A4D7C;
+            --light-blue: #2A6C9E;
+            --accent-green: #00BF72; /* Vibrant green */
+            --bright-yellow: #FFD100; /* Accent for highlights */
+            --white-text: #FFFFFF;
+            --soft-white: rgba(255, 255, 255, 0.9);
+            --dark-text: #333;
+            --bg-light: #f0f2f5;
+            --shadow-subtle: 0 2px 10px rgba(0, 0, 0, 0.15); /* Lighter shadow */
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+          :root {
+            --primary-blue: #0A2F50; /* Darker blue, dominant */
+            --secondary-blue: #1A4D7C; /* Mid blue */
+            --tertiary-blue: #2A6C9E; /* Lighter blue, for submenus */
+            --accent-green: #00BF72; /* Vibrant green */
+            --accent-yellow: #FFD100; /* Bright yellow */
+            --text-light: #FFFFFF;
+            --text-dark: #333;
+            --bg-light: #f8f9fa; /* Light background for sections */
+            --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            /* --border-light: rgba(255, 255, 255, 0.1); */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            /* background-image: url("/MPSEDC2/pexels-kasperphotography-978535.jpg"); */
+              background-image: url("/MPSEDC3/17973908.jpg");
+             /* background-image: url("/MPSEDC2//newImg.jpg"); */
+  background-size: cover;              /* Cover the entire screen */
+  background-attachment: fixed;        /* Keeps the image fixed while content scrolls */
+  background-position: center center;  /* Center the image */
+  background-repeat: no-repeat;        /* No tiling */
+  margin: 0;
+  padding: 0;
+            
+            /* background-size: auto; */
+            /* background: linear-gradient(135deg, #e0f2f1, #e3f2fd); */
+        }
+
+        .site-header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 50%, var(--light-blue) 100%);
+            color: var(--white-text);
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Top Bar Styling - More compact */
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 4px 20px; /* Reduced padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px; /* Reduced gap */
+            font-size: 0.75rem; /* Smaller font size */
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .top-bar-section {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Reduced gap */
+            flex-wrap: wrap;
+        }
+
+        .top-bar a, .top-bar button, .top-bar input {
+            color: var(--soft-white);
+            text-decoration: none;
+            padding: 3px 8px; /* Reduced padding */
+            border-radius: 3px;
+            transition: all 0.2s ease-in-out;
+            background: transparent;
+            border: none;
+        }
+        
+        .top-bar button {
+            cursor: pointer;
+            border: 1px solid var(--border-light);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .top-bar a:hover, .top-bar button:hover {
+            color: var(--bright-yellow);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px; /* Slightly smaller radius */
+            padding: 4px 12px; /* Reduced padding */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 150px; /* Smaller max width */
+            color: var(--white-text);
+            font-size: 0.75rem; /* Match other elements */
+        }
+        .top-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .top-bar input:focus {
+            outline: none;
+            border-color: var(--bright-yellow);
+            box-shadow: 0 0 0 2px rgba(255, 209, 0, 0.3);
+        }
+        .font-size-controls button {
+            width: 24px; /* Smaller buttons */
+            height: 24px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--border-light);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Logo & Branding Area - More concise */
+        .logo-branding {
+            background-color: var(--dark-blue);
+            padding: 12px 20px; /* Reduced padding */
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Reduced gap */
+            position: relative;
+            z-index: 10;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        .logo-branding img {
+            height: 60px; /* Smaller logos */
+            object-fit: contain;
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .main-title {
+            flex: 1;
+            text-align: left;
+            margin: 0;
+            line-height: 1.1; /* Tighter line height */
+        }
+
+        .main-title h1 {
+            font-size: 1.5rem; /* Smaller font size */
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 0.8px; /* Slightly reduced letter spacing */
+            text-transform: uppercase;
+            color: var(--bright-yellow);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-title .tagline {
+            font-size: 0.85rem; /* Smaller tagline font */
+            font-weight: 300;
+            opacity: 0.95;
+            margin-top: 3px; /* Reduced margin */
+        }
+
+        /* Main Navigation Styling - Compacted links */
+        .main-nav {
+            background-color: var(--mid-blue);
+            padding: 0 20px; /* Reduced padding */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter inner shadow */
+            position: relative;
+        }
+
+        .main-nav ul {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Reduced gap for icons */
+            padding: 10px 18px; /* Reduced padding */
+            color: var(--white-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem; /* Smaller font size */
+            transition: all 0.3s ease-out;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .main-nav ul li a i {
+            font-size: 1em; /* Proportional icon size */
+            color: var(--accent-green);
+        }
+
+        .main-nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-out;
+            z-index: -1;
+        }
+
+        .main-nav ul li a:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .main-nav ul li a:hover {
+            color: var(--bright-yellow);
+        }
+
+        /* Dropdown & Mega Menu Base Styles */
+        .dropdown-menu, .mega-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--light-blue);
+            box-shadow: var(--shadow-subtle);
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            min-width: 200px; /* Slightly smaller min-width */
+            opacity: 0;
+            transform: translateY(10px); /* Reduced translate */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border-top: 4px solid var(--accent-green); /* Slightly thinner border */
+            border-radius: 0 0 6px 6px; /* Smaller radius */
+            overflow: hidden;
+        }
+
+        .main-nav ul li:hover > .dropdown-menu,
+        .main-nav ul li:hover > .mega-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            color: var(--soft-white);
+            padding: 10px 15px; /* Reduced padding */
+            font-size: 0.85rem; /* Smaller font */
+            white-space: nowrap;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Reduced gap */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--accent-green);
+            color: var(--white-text);
+            transform: none;
+        }
+        .dropdown-menu li a::before {
+            display: none;
+        }
+
+        /* Mega Menu Specific Styles */
+        .mega-menu {
+            width: 95%; /* Take up more width but keep max */
+            max-width: 1000px; /* Cap max width for larger screens */
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            padding: 20px; /* Reduced padding */
+            gap: 20px; /* Reduced gap */
+            border-radius: 0 0 8px 8px; /* Smaller radius */
+        }
+
+        .mega-menu-column {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 12px; /* Reduced padding */
+            border-radius: 4px;
+            border-left: 2px solid var(--accent-green); /* Thinner accent */
+        }
+
+        .mega-menu-column h4 {
+            color: var(--bright-yellow);
+            margin-top: 0;
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 1rem; /* Smaller font */
+            font-weight: 700;
+            padding-left: 4px;
+        }
+
+        .mega-menu-column ul li a {
+            color: rgba(255, 255, 255, 0.85);
+            padding: 5px 0; /* Reduced padding */
+            font-size: 0.8rem; /* Smaller font */
+        }
+        .mega-menu-column ul li a:hover {
+            color: var(--accent-green);
+        }
+        .mega-menu-column ul li a::before {
+            display: none;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger-menu {
+            display: none;
+            font-size: 2rem; /* Slightly smaller icon */
+            color: var(--accent-green);
+            cursor: pointer;
+            padding: 8px; /* Reduced padding */
+            position: absolute;
+            right: 20px; /* Adjusted position */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1010;
+            transition: color 0.3s ease, transform 0.3s ease;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
+        }
+
+        .hamburger-menu:hover {
+            color: var(--bright-yellow);
+            transform: translateY(-50%) scale(1.05); /* Less pronounced scale */
+        }
+
+        /* Mobile Nav Overlay & Sidebar */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1005;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-nav-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100vw;
+            width: 75vw; /* Slightly more width on mobile */
+            max-width: 320px; /* Slightly smaller max-width */
+            height: 100%;
+            background: linear-gradient(180deg, var(--mid-blue), var(--dark-blue));
+            color: var(--white-text);
+            box-shadow: -6px 0 15px rgba(0, 0, 0, 0.5); /* Lighter shadow */
+            z-index: 1006;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Retain bounce */
+            overflow-y: auto;
+            padding-top: 70px; /* Reduced padding for close button */
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .mobile-nav-sidebar.active {
+            right: 0;
+        }
+
+        .mobile-nav-sidebar.active + .mobile-nav-overlay { /* Selector for overlay when sidebar is active */
+            display: block;
+            opacity: 1;
+        }
+
+
+        .mobile-nav-sidebar .mobile-main-menu {
+            flex-direction: column;
+            padding: 15px 0; /* Reduced padding */
+            align-items: flex-start;
+        }
+
+        .mobile-nav-sidebar .mobile-main-menu li {
+            width: 100%;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-sidebar .mobile-main-menu li a {
+            padding: 12px 25px; /* Reduced padding */
+            font-size: 0.95rem; /* Slightly smaller font */
+            gap: 12px; /* Reduced gap */
+        }
+        .mobile-nav-sidebar .mobile-main-menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--bright-yellow);
+        }
+        .mobile-nav-sidebar .mobile-main-menu li a i {
+            color: var(--bright-yellow);
+            font-size: 1.1em; /* Adjusted icon size */
+        }
+
+        /* Mobile Dropdowns/Mega Menus inside sidebar */
+        .mobile-nav-sidebar .dropdown-menu,
+        .mobile-nav-sidebar .mega-menu {
+            background-color: rgba(0, 0, 0, 0.1); /* Lighter background for sub-items */
+            transition: max-height 0.3s ease-out; /* Faster transition */
+        }
+        
+        .mobile-nav-sidebar li.has-submenu > a::after {
+            right: 20px; /* Adjusted position */
+            font-size: 0.8em; /* Smaller icon */
+        }
+
+        .mobile-nav-sidebar .dropdown-menu li a,
+        .mobile-nav-sidebar .mega-menu-column ul li a {
+            padding: 8px 40px; /* Reduced padding */
+            font-size: 0.85rem; /* Smaller font */
+        }
+        .mobile-nav-sidebar .mega-menu-column {
+            padding: 8px 25px; /* Reduced padding */
+        }
+        .mobile-nav-sidebar .mega-menu-column h4 {
+            font-size: 0.95rem; /* Smaller font */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; /* Adjusted position */
+            right: 20px; /* Adjusted position */
+            font-size: 2.2rem; /* Slightly smaller close button */
+            color: var(--bright-yellow);
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .logo-branding, .top-bar, .main-nav {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .main-title h1 {
+                font-size: 1.4rem;
+            }
+            .main-title .tagline {
+                font-size: 0.8rem;
+            }
+            .main-nav ul li a {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            .mega-menu {
+                width: 98%;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 991px) { /* Tablet and smaller */
+            .main-nav {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .logo-branding {
+                padding-right: 80px;
+                flex-direction: column; /* Stack logo and text vertically */
+                align-items: center;
+                text-align: center;
+                gap: 10px; /* Smaller gap */
+            }
+            .logo-branding img {
+                height: 55px; /* Further reduced */
+            }
+            .main-title {
+                text-align: center;
+            }
+            .main-title h1 {
+                font-size: 1.2rem; /* Reduced again */
+            }
+            .main-title .tagline {
+                font-size: 0.75rem; /* Reduced again */
+            }
+            .top-bar {
+                align-items: stretch; /* Stretch items to fill width */
+                justify-content: center;
+                flex-direction: row; /* Keep as row if enough space, but allow wrap */
+            }
+            .top-bar-section {
+                justify-content: center;
+                width: auto; /* Allow sections to size naturally */
+            }
+            .top-bar-section:nth-child(2) { /* Accessibility links row */
+                order: -1; /* Move skip links above font size controls */
+            }
+            .top-bar-section:nth-child(1) { /* Font size controls row */
+                width: 100%; /* Make font controls take full width */
+            }
+            .top-bar-section:last-child { /* Search/Lang row */
+                width: 100%; /* Make search/lang take full width */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column; /* Force column on smaller tablets */
+                align-items: stretch;
+                padding: 8px;
+            }
+            .top-bar-section {
+                width: 100%; /* Ensure full width when stacked */
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+            .top-bar-section:nth-child(1), .top-bar-section:nth-child(2), .top-bar-section:last-child {
+                order: unset; /* Reset order for full column stack */
+            }
+            .top-bar input {
+                max-width: 100%;
+            }
+            .logo-branding {
+                padding: 10px; /* More reduced padding */
+                padding-right: 10px;
+            }
+            .logo-branding img {
+                height: 45px;
+            }
+            .main-title h1 {
+                font-size: 1.05rem;
+            }
+            .main-title .tagline {
+                font-size: 0.7rem;
+            }
+            .hamburger-menu {
+                right: 10px; /* Closer to edge */
+                font-size: 1.8rem;
+            }
+            .mobile-nav-sidebar {
+                width: 90vw; /* Wider on mid-size mobiles */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-branding img {
+                height: 40px;
+            }
+            .main-title h1 {
+                font-size: 0.9rem;
+            }
+            .main-title .tagline {
+                font-size: 0.65rem;
+            }
+            .top-bar button, .top-bar a {
+                font-size: 0.65rem;
+                padding: 3px 6px;
+            }
+            .hamburger-menu {
+                font-size: 1.6rem;
+            }
+            .mobile-nav-sidebar {
+                width: 100vw;
+            }
+            .close-btn {
+                font-size: 2rem;
+            }
+        }
+    /* General body styling for a consistent look */
+
+     /*
+    * CSS Reset & Base Styles for Gallery Component
+    * These rules are scoped to the .modern-gallery-section to prevent global conflicts.
+    */
+    .modern-gallery-section * {
+      box-sizing: border-box;
+    }
+
+    /* Wrapper for the entire gallery section to manage background and centering */
+    /* This ensures that when you integrate this code into an existing page, */
+    /* it doesn't override the main <body> styles of that page. */
+   .gallery-page-wrapper {
+  margin: 0;
+  padding: 0; /* Removed extra padding */
+  font-family: "Segoe UI", sans-serif;
+  /* background: linear-gradient(135deg, #e0f2f1, #e3f2fd); */
+  color: #fff;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 62vh;
+  width: 100%;
+}
+
+    /* Main gallery container styles */
+  .modern-gallery-section .gallery-container {
+  width: 96%; /* Full width */
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 10px 0; /* Minimize padding */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    /* Individual slide styles */
+    .modern-gallery-section .slide {
+      display: none; /* Hidden by default, shown by JavaScript */
+      position: relative;
+      animation: flipIn 0.8s ease forwards; /* 3D flip-in animation */
+      transform-style: preserve-3d; /* For 3D transformations */
+    }
+
+    /* Image within the slide */
+    .modern-gallery-section .slide img {
+      width: 100%;
+      max-height: 520px;
+      min-height: 220px;
+
+      object-fit: fill; /* Cover the area, cropping if necessary */
+      border-radius: 18px; /* Slightly smaller border radius to fit container */
+      animation: zoomPan 12s ease-in-out infinite alternate; /* Slower, alternating zoom/pan */
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.35); /* Vibrant shadow */
+      border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+      transition: transform 0.2s ease-out, filter 0.3s ease; /* Smoother parallax transition and filter for blur */
+    }
+
+    /* Blur effect on image hover */
+    .modern-gallery-section .slide img:hover {
+            /* width: 100%; */
+        /* filter: blur(5px) brightness(0.8);  */
+        /* Apply blur and slight darkening */
+        filter:  brightness(0.8); /* Apply blur and slight darkening */
+    }
+
+    /* Number text overlay (e.g., "1 / 7") */
+    .modern-gallery-section .numbertext {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5); /* Slightly darker background */
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 2; /* Ensure it's above the image */
+      color: #e0f7fa; /* Light cyan text */
+    }
+
+    /* Previous and Next buttons */
+    .modern-gallery-section .prev,
+    .modern-gallery-section .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%; /* Vertically center */
+      padding: 12px 20px; /* Slightly larger padding */
+      color: #00e5ff; /* Vibrant teal color */
+      font-weight: bold;
+      font-size: 26px; /* Larger arrow icons */
+      border-radius: 50%; /* Make them circular */
+      background: rgba(0, 0, 0, 0.7); /* Darker background */
+      transform: translateY(-50%);
+      z-index: 2;
+      box-shadow: 0 4px 25px rgba(0, 229, 255, 0.5); /* Stronger glow shadow */
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px); /* Add blur to arrows for frosted look */
+    }
+
+    .modern-gallery-section .prev:hover,
+    .modern-gallery-section .next:hover {
+      background-color: #00bcd4; /* Brighter teal on hover */
+      color: #fff;
+      transform: translateY(-50%) scale(1.15); /* More pronounced scale */
+      box-shadow: 0 6px 30px rgba(0, 229, 255, 0.7); /* Intense glow on hover */
+    }
+
+    .modern-gallery-section .prev { left: -15px; } /* Offset more from edge */
+    .modern-gallery-section .next { right: -15px; } /* Offset more from edge */
+
+    /* Caption container */
+    .modern-gallery-section .caption-container {
+      margin-top: 20px; /* More space from image */
+      text-align: center;
+      font-size: 1rem; /* Slightly larger font */
+      color: #133450; /* Light blue text */
+      font-weight: 500;
+      font-style: italic;
+      background: rgba(255, 255, 255, 0.08); /* Slightly more opaque */
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.2); /* Stronger inner glow */
+      min-height: 50px; /* Ensure consistent height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Row for thumbnail columns */
+    .modern-gallery-section .row {
+      display: flex;
+      flex-wrap: wrap; /* Allow thumbnails to wrap to the next line */
+      justify-content: center; /* Center thumbnails */
+      gap: 10px; /* Reduced gap for more thumbs */
+      margin-top: 25px; /* More space from caption */
+    }
+
+    /* Individual thumbnail column */
+    .modern-gallery-section .column {
+      flex: 1 0 auto; /* Allow flexible growth, but don't force minimum */
+      max-width: 100px; /* Slightly smaller max width for thumbs */
+      min-width: 60px /* Ensure they don't get too small */
+    }
+
+    /* Thumbnail image styles */
+    .modern-gallery-section .demo {
+      width: 100%;
+      height: 60px;
+      opacity: 0.5; /* Slightly less opaque by default */
+      border-radius: 6px; /* Softer corners */
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for thumbs */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+    }
+
+    .modern-gallery-section .demo:hover,
+    .modern-gallery-section .demo.active {
+      opacity: 1;
+      transform: scale(1.08); /* More pronounced scale on hover/active */
+      box-shadow: 0 0 8px #00bcd4, 0 0 15px #00e5ff; /* Stronger glow */
+      animation: pulseGlow 1.8s infinite alternate; /* Slightly faster pulse */
+    }
+
+    /* Slideshow toggle button */
+    .modern-gallery-section .slideshow-toggle {
+      position: absolute;
+      top: 20px; /* Adjusted position */
+      right: 20px; /* Adjusted position */
+      z-index: 3;
+      background: linear-gradient(145deg, #00d9ff, #007bff); /* Brighter gradient */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 38px; /* Slightly larger button */
+      height: 38px;
+      font-size: 16px; /* Larger icon */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 229, 255, 0.4);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .modern-gallery-section .slideshow-toggle:hover {
+      background: linear-gradient(145deg, #00a4b7, #0056a2); /* Darker gradient on hover */
+      transform: scale(1.15); /* More pronounced hover effect */
+      box-shadow: 0 6px 25px rgba(0, 229, 255, 0.6);
+    }
+
+    /* Keyframe Animations */
+    @keyframes flipIn {
+      from { transform: rotateY(-90deg) scale(0.8); opacity: 0; } /* Start smaller and rotated */
+      to { transform: rotateY(0) scale(1); opacity: 1; }
+    }
+
+    @keyframes zoomPan {
+      0% { transform: scale(1) translate(0, 0); }
+      25% { transform: scale(1.03) translate(-8px, 5px); }
+      50% { transform: scale(1.06) translate(8px, -5px); }
+      75% { transform: scale(1.03) translate(-8px, 5px); }
+      100% { transform: scale(1) translate(0, 0); }
+    }
+
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 8px #00bcd4, 0 0 15px #00bcd4; }
+      to { box-shadow: 0 0 15px #00e5ff, 0 0 25px #00e5ff; }
+    }
+
+    /* Media Queries for Responsiveness */
+    @media screen and (max-width: 768px) {
+      .modern-gallery-section .gallery-container {
+        margin: 40px auto;
+        padding: 25px;
+      }
+      .modern-gallery-section .slide img {
+        max-height: 400px;
+      }
+      .modern-gallery-section .prev,
+      .modern-gallery-section .next {
+        padding: 10px 16px;
+        font-size: 22px;
+      }
+      .modern-gallery-section .caption-container {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+      }
+      .modern-gallery-section .column {
+        max-width: 55px; /* Adjust thumbnail size */
+        min-width: 35px;
+      }
+      .modern-gallery-section .slideshow-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .modern-gallery-section .column {
+        flex: 1 0 18%; /* 5 columns on smaller screens */
+        max-width: 48px;
+      }
+      .modern-gallery-section .slideshow-toggle {
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+      .modern-gallery-section .gallery-container {
+        margin: 20px auto;
+        padding: 20px;
+      }
+      .modern-gallery-section .slide img {
+        max-height: 300px;
+      }
+    .modern-gallery-section .prev,
+.modern-gallery-section .next {
+  padding: 8px 14px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%; /* Vertically center the buttons */
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+/* Specific to previous button (left side) */
+.modern-gallery-section .prev {
+  left: -5px;
+  right: auto;
+}
+
+
+/* Specific to next button (right side) */
+.modern-gallery-section .next {
+  right: -5px;
+  left: auto;
+}
+
+    }
+   
+
+    @media screen and (max-width: 400px) {
+      .modern-gallery-section .column {
+        flex: 1 0 25%; /* 4 columns on very small screens */
+        max-width: 45px;
+      }
+      .modern-gallery-section .gallery-container {
+        padding: 15px;
+      }
+      .modern-gallery-section .numbertext {
+        top: 10px;
+        left: 10px;
+        padding: 4px 8px;
+        font-size: 12px;
+      }
+      .modern-gallery-section .caption-container {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+  .modern-gallery-section .gallery-container {
+    margin: 0 auto;
+    padding: 8px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modern-gallery-section .gallery-container {
+    margin: 0 auto;
+    padding: 6px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .modern-gallery-section .gallery-container {
+    padding: 4px 0;
+  }
+}
+
+
+    
+    /* body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
+    } */
+
+    /* Combined Content Wrapper */
+    .combined-content {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* background: linear-gradient(135deg, #e0f2f1, #e3f2fd); */
+      padding: 30px 50px; /* Add overall padding */
+    }
+
+    /* --- Projects & Verticals Section --- */
+        .projects-section-box {
+           /* background: linear-gradient(135deg, #e0f2f1, #e3f2fd); */
+            padding: 0px 0;
+            text-align: center;
+        }
+
+        .projects-section-box h2 {
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .projects-section-box h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .projects-section-box .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            background-color: #fff;
+            margin-bottom: 20px; /* Space between cards in case of wrap */
+        }
+
+        .projects-section-box .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .projects-section-box .card-img-top {
+            height: 130px; /* Fixed height for consistent card images */
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .projects-section-box .icon-circle {
+            position: absolute;
+            top: 100px; /* Adjust to sit on the image border */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65px; /* Slightly larger icon */
+            height: 65px; /* Slightly larger icon */
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 2rem; /* Larger icon font size */
+            border: 4px solid var(--text-light); /* White border around icon */
+            box-shadow: var(--shadow-md);
+            z-index: 1;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .projects-section-box .card:hover .icon-circle {
+            background-color: var(--primary-blue); /* Change icon background on hover */
+            transform: translateX(-50%) rotate(10deg) scale(1.05); /* Slight rotation and scale */
+        }
+
+        .projects-section-box .card-body {
+            padding: 30px 15px 15px; /* More top padding to account for icon-circle */
+            text-align: center;
+        }
+
+        .projects-section-box .card-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            min-height: 40px; /* Ensure consistent height for titles */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projects-section-box .know-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--secondary-blue);
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .projects-section-box .know-more:hover {
+            color: var(--accent-green);
+            transform: translateX(5px);
+        }
+        .projects-section-box .know-more::after {
+            content: "\f054"; /* chevron-right icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-left: 5px;
+            font-size: 0.8em;
+            vertical-align: middle;
+            transition: transform 0.2s ease;
+        }
+        .projects-section-box .know-more:hover::after {
+            transform: translateX(3px);
+        }
+
+    /* Latest Updates Section */
+    .latest-updates-col {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align to the top */
+      padding-top: 15px; /* Align with projects heading */
+    }
+
+    .latest-updates-wrapper {
+        margin-top: 70px;
+      background: none; /* Remove wrapper background, box has its own */
+      min-height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0; /* No padding on wrapper itself */
+    }
+
+    .latest-updates-box {
+      width: 100%;
+      max-width: 320px; /* Made considerably smaller */
+      background: rgba(255, 255, 255, 0.25); /* Slightly less transparent */
+      backdrop-filter: blur(10px); /* Slightly less blur */
+      border-radius: 20px; /* Match project card radius */
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      padding: 25px 20px; /* Reduced padding */
+      border: 1px solid rgba(255, 255, 255, 0.4); /* Softer border */
+      animation: fadeInSlideUp 0.8s ease-out forwards; /* New animation */
+      opacity: 0; /* Start hidden for animation */
+      transform: translateY(20px); /* Start slightly below for slide-up effect */
+    }
+
+    @keyframes fadeInSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .latest-updates-box h2 {
+      text-align: center;
+      font-size: 26px; /* Smaller heading */
+      font-weight: 700;
+      background: linear-gradient(90deg, #8e44ad, #3498db, #1abc9c);
+      background-size: 200% auto;
+      background-clip: text;
+      /* text-fill-color: transparent; */
+      /* -webkit-background-clip: text; */
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 4s linear infinite;
+      margin-top: 0;
+      margin-bottom: 20px; /* Reduced margin */
+      letter-spacing: 0.8px; /* Slightly tighter spacing */
+      text-transform: uppercase;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    .updates-container {
+        
+      max-height: 400px; /* Adjusted height for smaller box */
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding-right: 4px; /* Thinner scrollbar area */
+    }
+
+    .updates-container::-webkit-scrollbar {
+      width: 4px; /* Thinner scrollbar */
+    }
+
+    .updates-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(#90caf9, #b39ddb); /* Softer gradient */
+      border-radius: 8px; /* Smaller radius */
+    }
+
+    .update-item {
+      display: flex;
+      gap: 12px; /* Reduced gap */
+      align-items: center;
+      background: rgba(255, 255, 255, 0.35); /* Slightly more transparent */
+      border-radius: 14px; /* Smaller radius */
+      padding: 14px; /* Reduced padding */
+      margin-bottom: 15px; /* Reduced margin */
+      transition: all 0.2s ease; /* Faster transition */
+      border-left: 4px solid #9575cd; /* Thinner, softer border */
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    }
+
+    .update-item:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px); /* Less pronounced lift */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .date {
+      width: 65px; /* Smaller date circle */
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #7e57c2, #42a5f5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+      flex-shrink: 0;
+    }
+
+    .date .day {
+      font-size: 20px; /* Slightly smaller day font */
+      font-weight: bold;
+    }
+
+    .date .month {
+      font-size: 10px; /* Slightly smaller month font */
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .text {
+      flex: 1;
+      font-size: 14.5px; /* Slightly smaller text */
+      color: #2f2f2f;
+      font-weight: 500;
+      line-height: 1.4; /* Tighter line height */
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px; /* Smaller padding */
+      background: linear-gradient(to right, #00c6ff, #7b1fa2);
+      color: white;
+      font-size: 12.5px; /* Smaller font size */
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 7px; /* Smaller radius */
+      margin-top: 8px; /* Reduced margin */
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Softer shadow */
+      transition: all 0.2s ease;
+    }
+
+    .btn-download i {
+      margin-right: 5px; /* Smaller margin */
+      font-size: 11px; /* Smaller icon */
+    }
+
+    .btn-download:hover {
+      background: linear-gradient(to right, #0077c2, #6a1b9a);
+      transform: scale(1.03); /* Less pronounced scale */
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Media Queries */
+    @media (min-width: 992px) {
+      .combined-content .row {
+        align-items: flex-start; /* Align content to the top */
+      }
+          .col-lg-9 {
+        flex: 0 0 auto;
+        width: 70%;
+    }
+        .col-lg-3 {
+        flex: 0 0 auto;
+        width: 30%;
+    }
+    }
+
+    @media (max-width: 991.98px) {
+      .projects-section-box h2, .latest-updates-box h2 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+      .projects-section-box {
+        padding-bottom: 20px; /* Add bottom padding when stacked */
+      }
+      .latest-updates-col {
+        padding-top: 0; /* Remove top padding when stacked */
+        margin-top: 30px; /* Add margin between sections when stacked */
+      }
+      .latest-updates-box {
+        max-width: 400px; /* Wider on tablets/smaller screens when stacked */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .projects-section-box .card-img-top {
+        height: 140px;
+      }
+      .projects-section-box .icon-circle {
+        top: 115px;
+        padding: 8px;
+      }
+      .projects-section-box .icon-circle i {
+        font-size: 16px;
+      }
+      .projects-section-box .card-title {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .projects-section-box .row-cols-md-3 {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1.5rem;
+      }
+      .projects-section-box .col {
+        flex: 0 0 50%; /* Two columns on smaller screens */
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .projects-section-box .col {
+        flex: 0 0 100%; /* Single column on extra small screens */
+        max-width: 100%;
+      }
+      .latest-updates-box {
+        padding: 20px 15px;
+      }
+      .date {
+        width: 55px;
+        height: 55px;
+      }
+      .date .day {
+        font-size: 16px;
+      }
+      .date .month {
+        font-size: 9px;
+      }
+      .text {
+        font-size: 13.5px;
+      }
+      .btn-download {
+        font-size: 11.5px;
+        padding: 4px 10px;
+      }
+      .combined-content{
+        padding: 10px 10px;
+      }
+    }
+
+    
+    .partners-section {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .partners-section .content {
+      padding: 2rem;
+      /* background: #f3f4f6; */
+      text-align: center;
+    }
+
+    .partners-section .logo-carousel {
+      width: 100%;
+      /* background: #ffffff; */
+      border-top: 3px solid #006442;
+      padding: 10px 0;
+      overflow: hidden;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .partners-section .carousel-track {
+      display: flex;
+      animation: scroll 20s linear infinite;
+      width: fit-content;
+    }
+
+    .partners-section .logo-item {
+      flex: 0 0 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      margin: 0 8px;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s, box-shadow 0.3s, background 0.3s;
+      min-width: 150px;
+      text-decoration: none;
+    }
+
+    .partners-section .logo-item:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .partners-section .logo-item img {
+      max-width: 100%;
+      max-height: 50px;
+      object-fit: contain;
+    }
+
+    .partners-section .logo-item p {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #374151;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partners-section .logo-carousel:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    /* Tablets */
+   /* Base styles already look good — no change needed here */
+
+/* Large Tablets and Small Laptops (between 768px and 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .partners-section .logo-item {
+    flex: 0 0 25%;         /* 4 items per row */
+    min-width: 80px;
+  }
+
+  .partners-section .logo-item p {
+    font-size: 12px;
+  }
+}
+
+/* Tablets (up to 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .partners-section .logo-item {
+    flex: 0 0 33.33%;       /* 3 items per row */
+     min-width: 60px;
+  }
+
+  .partners-section .logo-item p {
+    font-size: 11.5px;
+  }
+}
+
+/* Small Devices (≤ 480px) */
+@media (max-width: 480px) {
+  .partners-section .logo-item {
+    flex: 0 0 50%;          /* 2 items per row */
+    max-width: 20px;
+    padding: 8px;
+  }
+
+  .partners-section .logo-item img {
+    max-height: 40px;       /* Slightly smaller logos */
+  }
+
+  .partners-section .logo-item p {
+    font-size: 10.5px;
+  }
+
+  .partners-section .carousel-track {
+    gap: 6px; /* More spacing for touch devices */
+  }
+}
+      .foot{
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+}
+
+.footer {
+  background-color: var(--dark-blue);
+  color: #ffffff;
+  padding: 20px 10px 10px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.7);
+  margin-top: auto;
+}
+
+.footer h5 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f1f1f1;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  font-size: 12.5px;
+  margin-bottom: 5px;
+  color: #cccccc;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.footer ul li i {
+  color: #00bcd4;
+  margin-right: 6px;
+  width: 16px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer ul li:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+.footer ul li a {
+  color: inherit;           /* Inherits color from parent */
+  text-decoration: none;    /* Removes underline */
+  display: inline-block;    /* Makes the link wrap around icon + text properly */
+  transition: all 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #00bcd4;           /* Optional: Add a subtle hover color */
+}
+
+.footer-bottom {
+  background: #121212;
+  color: #bbbbbb;
+  font-size: 11.5px;
+  padding: 8px 10px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.6;
+}
+
+.footer-bottom a {
+  color: #4fc3f7;
+  margin: 0 4px;
+  text-decoration: none;
+  font-size: 11.5px;
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+    padding: 20px 8px 8px;
+  }
+
+  .footer .col-md-3 {
+    margin-bottom: 15px;
+  }
+
+  .footer h5 {
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+
+  .footer ul li {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+  }
+
+  .footer-bottom a {
+    font-size: 11px;
+  }
+}
+  </style>
+</head>
+<body>
+   <header class="site-header">
+        <div class="top-bar">
+            <div class="top-bar-section font-size-controls">
+                <button id="decrease">A–</button>
+                <button id="default">A</button>
+                <button id="increase">A+</button>
+            </div>
+            <div class="top-bar-section">
+                <a href="#"><i class="fas fa-universal-access"></i> Screen Reader</a>
+                <a href="#main-content">Skip to Main Content</a>
+                <a href="#navigation">Skip to Navigation</a>
+            </div>
+            <div class="top-bar-section">
+                <a href="#">IT Policy‑2023</a>
+                <a href="#">Security Audit Login</a>
+                <a href="#">CMS Login</a>
+                <a href="#">EOI Form</a>
+            </div>
+            <div class="top-bar-section search-lang-controls">
+                <input type="text" placeholder="Search…" />
+                <button>हिंदी</button>
+            </div>
+        </div>
+
+        <div class="logo-branding">
+            <img src="https://mpsedc.mp.gov.in/Uploaded%20Document/header/28072020125926mpsedclogo.png" alt="MPSEDC Logo" />
+            
+            <div class="main-title">
+                <h1>M.P. STATE ELECTRONICS DEVELOPMENT CORPORATION LTD.</h1>
+                <div class="tagline">A Government of MP Undertaking</div>
+            </div>
+
+            <img src="https://mpsedc.mp.gov.in/Uploaded%20Document/header/28072020125926mplogo.png" alt="Govt of MP Logo" />
+
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <nav id="navigation" class="main-nav">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+<li class="has-submenu">
+    <a href="#"><i class="fas fa-building"></i> About Us <i class="fas fa-caret-down"></i></a>
+    <ul class="dropdown-menu">
+        <li><a href="#"><i class="fas fa-dot-circle"></i> Objective</a></li>
+        <li><a href="#"><i class="fas fa-bullseye"></i> Mission</a></li>
+        <li><a href="#"><i class="fas fa-eye"></i> Vision</a></li>
+        <li><a href="#"><i class="fas fa-sitemap"></i> Organization</a></li>
+        <li><a href="#"><i class="fas fa-users-cog"></i> Board of Directors</a></li>
+        <li><a href="#"><i class="fas fa-network-wired"></i> Subsidiaries</a></li>
+        <li><a href="#"><i class="fas fa-user-tie"></i> Key Managerial Personnel</a></li>
+        <li><a href="#"><i class="fas fa-id-card-alt"></i> MPSEDC Registration Details</a></li>
+        <li><a href="#"><i class="fas fa-briefcase"></i> Vacancy</a></li>
+    </ul>
+</li>
+                <li class="has-submenu">
+                    <a href="#"><i class="fas fa-scroll"></i> Policies & Rules <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fas fa-book-open"></i> IT Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Procurement Rules</a></li>
+                        <li><a href="#"><i class="fas fa-balance-scale"></i> Service Rules</a></li>
+                        <li><a href="#"><i class="fas fa-user-shield"></i> Security Guidelines</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> HR Policies</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fas fa-clipboard-list"></i> Circulars & Orders</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i> CSR</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Investment Portal</a></li>
+                <li><a href="#"><i class="fas fa-gavel"></i> Tenders</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> RTI</a></li>
+                <li><a href="#"><i class="fas fa-newspaper"></i> Media</a></li>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-sidebar" id="mobileNavSidebar">
+        <div class="close-btn" id="closeMobileNav">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-main-menu">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="has-submenu">
+                <a href="#"><i class="fas fa-building"></i> About Us <i class="fas fa-caret-down"></i></a>
+                <div class="mega-menu">
+                    <div class="mega-menu-column">
+                        <h4>Our Vision</h4>
+                        <ul>
+                            <li><a href="#">Mission & Values</a></li>
+                            <li><a href="#">Strategic Goals</a></li>
+                            <li><a href="#">Future Plans</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu-column">
+                        <h4>Leadership</h4>
+                        <ul>
+                            <li><a href="#">Board of Directors</a></li>
+                            <li><a href="#">Management Team</a></li>
+                            <li><a href="#">Organizational Chart</a></li>
+                            <li><a href="#">Key Personnel</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu-column">
+                        <h4>Our History</h4>
+                        <ul>
+                            <li><a href="#">Milestones</a></li>
+                            <li><a href="#">Founding Principles</a></li>
+                            <li><a href="#">Achievements</a></li>
+                            <li><a href="#">Evolution</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu-column">
+                        <h4>Partnerships</h4>
+                        <ul>
+                            <li><a href="#">Collaborations</a></li>
+                            <li><a href="#">Industry Alliances</a></li>
+                            <li><a href="#">Government Initiatives</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="has-submenu">
+                <a href="#"><i class="fas fa-scroll"></i> Policies & Rules <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fas fa-book-open"></i> IT Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Procurement Rules</a></li>
+                    <li><a href="#"><i class="fas fa-balance-scale"></i> Service Rules</a></li>
+                    <li><a href="#"><i class="fas fa-user-shield"></i> Security Guidelines</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> HR Policies</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-clipboard-list"></i> Circulars & Orders</a></li>
+            <li><a href="#"><i class="fas fa-hand-holding-heart"></i> CSR</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Investment Portal</a></li>
+            <li><a href="#"><i class="fas fa-gavel"></i> Tenders</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> RTI</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> Media</a></li>
+            <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+        </ul>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            let currentFontSize = 16; // Default font size in px
+
+            // Font Size Controls
+            document.getElementById('decrease').addEventListener('click', () => {
+                currentFontSize = Math.max(12, currentFontSize - 1);
+                body.style.fontSize = `${currentFontSize}px`;
+            });
+
+            document.getElementById('default').addEventListener('click', () => {
+                currentFontSize = 16; // Reset to default
+                body.style.fontSize = `${currentFontSize}px`;
+            });
+
+            document.getElementById('increase').addEventListener('click', () => {
+                currentFontSize = Math.min(24, currentFontSize + 1);
+                body.style.fontSize = `${currentFontSize}px`;
+            });
+
+            // Mobile Navigation Toggle
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileNavSidebar = document.getElementById('mobileNavSidebar');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            const closeMobileNav = document.getElementById('closeMobileNav');
+
+            hamburgerMenu.addEventListener('click', () => {
+                mobileNavSidebar.classList.add('active');
+                mobileNavOverlay.classList.add('active');
+                body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+            });
+
+            closeMobileNav.addEventListener('click', () => {
+                mobileNavSidebar.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                body.style.overflow = ''; // Restore scrolling
+            });
+
+            mobileNavOverlay.addEventListener('click', () => {
+                mobileNavSidebar.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Mobile Dropdown/Mega Menu Toggle (inside sidebar)
+            const mobileSubmenuToggles = document.querySelectorAll('.mobile-nav-sidebar .has-submenu > a');
+
+            mobileSubmenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    const parentLi = toggle.closest('li.has-submenu');
+                    parentLi.classList.toggle('active'); // Toggle 'active' class on parent li
+                    
+                    const submenu = toggle.nextElementSibling; // Get the next sibling (dropdown/mega-menu)
+                    if (submenu) {
+                        // Toggle display using maxHeight for smooth animation
+                        if (submenu.style.maxHeight) {
+                            submenu.style.maxHeight = null; // Collapse
+                            submenu.style.display = 'none'; // Hide after collapsing
+                        } else {
+                            submenu.style.display = 'block'; // Show before expanding
+                            submenu.style.maxHeight = submenu.scrollHeight + "px"; // Expand
+                        }
+                    }
+                });
+            });
+
+            // Reset max-height on window resize for mobile submenus
+            window.addEventListener('resize', () => {
+                // Collapse all open mobile submenus when resizing to desktop
+                if (window.innerWidth > 991) {
+                    mobileNavSidebar.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    body.style.overflow = '';
+
+                    mobileSubmenuToggles.forEach(toggle => {
+                        const parentLi = toggle.closest('li.has-submenu');
+                        parentLi.classList.remove('active');
+                        const submenu = toggle.nextElementSibling;
+                        if (submenu) {
+                            submenu.style.maxHeight = null;
+                            submenu.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // Re-calculate max-height if sidebar is active and resized on mobile
+                    mobileSubmenuToggles.forEach(toggle => {
+                        const submenu = toggle.nextElementSibling;
+                        if (submenu && mobileNavSidebar.classList.contains('active') && submenu.style.display === 'block') {
+                            submenu.style.maxHeight = "none"; /* Allow natural height for recalc */
+                            submenu.style.maxHeight = submenu.scrollHeight + "px";
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <div class="gallery-page-wrapper">
+    <section id="gallery" class="modern-gallery-section">
+      <div class="gallery-container">
+        <div class="slide">
+          <div class="numbertext">1 / 7</div>
+          <img src="/MPSEDC3/02072025113455Ujjain mahakumb.jpg" alt="Ujjain New Hackathon">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">2 / 7</div>
+          <img src="/MPSEDC3/21082020025434IT Park Bhopal 1.jpg" alt="IT Park Bhopal">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">3 / 7</div>
+          <img src="/MPSEDC3/21082020025632IT Park Indore 1.jpg" alt="IT Park Indore">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">4 / 7</div>
+          <img src="/MPSEDC3/22022025061215Gwalior Malanpur Banner.jpg" alt="Vibrant circuit board patterns illustrating complex digital systems and cutting-edge electronics.">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">5 / 7</div>
+          <img src="/MPSEDC3/22022025061244Indore Sinhasa Banner.jpg" alt="An artistic representation of cybersecurity, with shimmering protective barriers and secure data streams.">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">6 / 7</div>
+          <img src="/MPSEDC3/010920200543162.jpg" alt="Abstract gradient waves symbolizing the seamless integration of technology into modern life.">
+        </div>
+
+        <div class="slide">
+          <div class="numbertext">7 / 7</div>
+          <img src="/MPSEDC3/21082020025632IT Park Indore 1.jpg" alt="A captivating blend of colors and geometric shapes, representing diverse technological advancements.">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <button id="toggleButton" onclick="toggleSlideshow()" class="slideshow-toggle" title="Toggle Slideshow">
+          <i class="fas fa-pause"></i>
+        </button>
+
+        <div class="caption-container">
+          <span id="caption"></span>
+        </div>
+
+        <div class="row">
+          <div class="column"><img class="demo" src="/MPSEDC3/02072025113455Ujjain mahakumb.jpg" onclick="currentSlide(1)" alt="Ujjain New Hackathon"></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/21082020025434IT Park Bhopal 1.jpg" onclick="currentSlide(2)" alt="IT Park Bhopal"></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/21082020025632IT Park Indore 1.jpg" onclick="currentSlide(3)" alt="IT Park Indore"></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/22022025061215Gwalior Malanpur Banner.jpg" onclick="currentSlide(4)" alt="Gwalior Malanpur Banner"></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/22022025061244Indore Sinhasa Banner.jpg" onclick="currentSlide(5)" alt="Indore Sinhasa Banner"></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/010920200543162.jpg" onclick="currentSlide(6)" alt="Integration of technology into modern life."></div>
+          <div class="column"><img class="demo" src="/MPSEDC3/21082020025632IT Park Indore 1.jpg" onclick="currentSlide(7)" alt="IT park Bhopal"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    let isPlaying = true;
+    let slideTimer;
+    const slideshowInterval = 4000; // Auto-advance every 4 seconds
+
+    // Scoped JavaScript selectors to prevent global conflicts
+    const galleryContainer = document.querySelector('.modern-gallery-section .gallery-container');
+    const slides = document.querySelectorAll(".modern-gallery-section .slide");
+    const dots = document.querySelectorAll(".modern-gallery-section .demo");
+    const captionText = document.getElementById("caption");
+    const toggleButton = document.getElementById("toggleButton");
+
+    function applyParallax(event) {
+      const activeSlide = slides[slideIndex - 1];
+      if (!activeSlide) return;
+
+      const image = activeSlide.querySelector('img');
+      if (!image) return;
+
+      const rect = galleryContainer.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      const sensitivity = 0.03; /* Increased sensitivity for more noticeable effect */
+      const moveX = (mouseX - centerX) * sensitivity;
+      const moveY = (mouseY - centerY) * sensitivity;
+
+      image.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.01)`; /* Slight scale for depth */
+    }
+
+    function resetParallax() {
+      const activeSlide = slides[slideIndex - 1];
+      if (!activeSlide) return;
+      const image = activeSlide.querySelector('img');
+      if (image) {
+        image.style.transform = `translate3d(0, 0, 0) scale(1)`; /* Reset to original scale */
+      }
+    }
+
+    function showSlides(n) {
+      if (n > slides.length) slideIndex = 1;
+      if (n < 1) slideIndex = slides.length;
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        // Reset transform and opacity to ensure fresh animation when displayed
+        slides[i].style.transform = 'rotateY(-90deg) scale(0.8)';
+        slides[i].style.opacity = '0';
+        const img = slides[i].querySelector('img');
+        if (img) img.style.transform = `translate3d(0, 0, 0) scale(1)`; /* Reset image specific transform */
+      }
+
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+
+      const currentSlideElement = slides[slideIndex - 1];
+      currentSlideElement.style.display = "block";
+      // Trigger reflow to restart animation for the displayed slide
+      // This ensures the flipIn animation plays every time a slide is shown
+      setTimeout(() => {
+        currentSlideElement.style.animation = 'none'; // Temporarily disable animation
+        currentSlideElement.offsetHeight; // Trigger reflow
+        currentSlideElement.style.animation = 'flipIn 0.8s ease forwards'; // Re-enable animation
+      }, 0);
+
+
+      dots[slideIndex - 1].classList.add("active");
+      // Update: Use more descriptive alt text for captions
+      captionText.innerHTML = `<i class="fas fa-image"></i> ${dots[slideIndex - 1].alt}`;
+
+
+      const numberTextElement = currentSlideElement.querySelector('.numbertext');
+      if (numberTextElement) {
+        numberTextElement.textContent = `${slideIndex} / ${slides.length}`;
+      }
+    }
+
+    function plusSlides(n) {
+      clearInterval(slideTimer); // Clear current timer
+      slideIndex += n;
+      showSlides(slideIndex);
+      if (isPlaying) startSlideshow(); // Restart if playing
+    }
+
+    function currentSlide(n) {
+      clearInterval(slideTimer); // Clear current timer
+      slideIndex = n;
+      showSlides(slideIndex);
+      if (isPlaying) startSlideshow(); // Restart if playing
+    }
+
+    function startSlideshow() {
+      slideTimer = setInterval(() => plusSlides(1), slideshowInterval);
+    }
+
+    function toggleSlideshow() {
+      if (isPlaying) {
+        clearInterval(slideTimer);
+        toggleButton.innerHTML = '<i class="fas fa-play"></i>';
+        toggleButton.title = 'Start Slideshow';
+      } else {
+        startSlideshow();
+        toggleButton.innerHTML = '<i class="fas fa-pause"></i>';
+        toggleButton.title = 'Pause Slideshow';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // Event listeners
+    galleryContainer.addEventListener('mousemove', applyParallax);
+    galleryContainer.addEventListener('mouseleave', resetParallax);
+
+    // Initial load
+    showSlides(slideIndex);
+    startSlideshow();
+  </script>
+
+
+  <div class="container-fluid combined-content">
+    <div class="row">
+      <div class="col-lg-9 projects-col">
+        <section class="projects-section-box" id="projects">
+          <h2>Projects & Verticals</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/header.jpg" class="card-img-top" alt="Adjudication Officer Banner">
+                <div class="icon-circle"><i class="fas fa-gavel"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Adjudication Officer - IT Act</h5>
+                  <a href="#" class="know-more" aria-label="Know more about Adjudication Officer">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/coe-center-of-excellence-business-concept-vector-44332485.jpg" class="card-img-top" alt="Centre of Excellence Banner">
+                <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Centre of Excellence</h5>
+                  <a href="#" class="know-more" aria-label="Know more about Centre of Excellence">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/download (1).jpg" class="card-img-top" alt="GIS Project">
+                <div class="icon-circle"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">MPSSDI / GIS</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/images.jpg" class="card-img-top" alt="Investment Promotion">
+                <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">IT Investment Promotion</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/download3.png" class="card-img-top" alt="EMC Project">
+                <div class="icon-circle"><i class="fas fa-database"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">EMC</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/images (1).jpg" class="card-img-top" alt="MP e-Tenders">
+                <div class="icon-circle"><i class="fas fa-file-signature"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">MP e-Tenders</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/download (2).jpg" class="card-img-top" alt="State Data Center">
+                <div class="icon-circle"><i class="fas fa-server"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">State Data Center</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/download (3).jpg" class="card-img-top" alt="SWAN Project">
+                <div class="icon-circle"><i class="fas fa-network-wired"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">SWAN</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/MPSEDC-Recruitment.png" class="card-img-top" alt="Parichai Identity">
+                <div class="icon-circle"><i class="fas fa-id-card"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Parichai</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/Aadhaar_Preview.png" class="card-img-top" alt="Aadhaar Services">
+                <div class="icon-circle"><i class="fas fa-fingerprint"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Aadhaar</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/images (3).jpg" class="card-img-top" alt="Election Tech">
+                <div class="icon-circle"><i class="fas fa-vote-yea"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Election</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/download.png" class="card-img-top" alt="Citizen Database">
+                <div class="icon-circle"><i class="fas fa-folder-open"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Single Citizen Database</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/security.jpg" class="card-img-top" alt="Security Audit Portal">
+                <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Security Audit Portal</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/mail.jpg" class="card-img-top" alt="EMAIL PMU">
+                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">EMAIL PMU</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <img src="/MPSEDC2/dataAn.png" class="card-img-top" alt="Data Analytics">
+                <div class="icon-circle"><i class="fas fa-chart-bar"></i></div>
+                <div class="card-body">
+                  <h5 class="card-title">Data Analytics</h5>
+                  <a href="#" class="know-more">Know More</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-3 latest-updates-col">
+        <section id="latest-updates" class="latest-updates-wrapper">
+          <div class="latest-updates-box">
+            <h2>📢 Latest Updates</h2>
+            <div class="updates-container">
+
+              <div class="update-item">
+                <div class="date">
+                  <div class="day">26</div>
+                  <div class="month">JUN 2025</div>
+                </div>
+                <div class="text">
+                  Register for Simhastha Tech Hackathon
+                  <br>
+                  <a href="sample.pdf" class="btn-download" download><i class="fas fa-download"></i>Click Here</a>
+                </div>
+              </div>
+
+              <div class="update-item">
+                <div class="date">
+                  <div class="day">3</div>
+                  <div class="month">APR 2025</div>
+                </div>
+                <div class="text">
+                  AI Innovation, State Consultation & UI/UX Workshop
+                  <br>
+                  <a href="sample.pdf" class="btn-download" download><i class="fas fa-download"></i>Click Here</a>
+                </div>
+              </div>
+
+              <div class="update-item">
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">MAR 2025</div>
+                </div>
+                <div class="text">
+                  Yearly Performance Assessment – Intern Batch 3 & 4
+                  <br>
+                  <a href="sample.pdf" class="btn-download" download><i class="fas fa-download"></i>Click Here</a>
+                </div>
+              </div>
+
+              <div class="update-item">
+                <div class="date">
+                  <div class="day">18</div>
+                  <div class="month">MAR 2025</div>
+                </div>
+                <div class="text">
+                  Result – Campus Recruitment Drive
+                  <br>
+                  <a href="sample.pdf" class="btn-download" download><i class="fas fa-download"></i>Click Here</a>
+                </div>
+              </div>
+
+              <div class="update-item">
+                <div class="date">
+                  <div class="day">7</div>
+                  <div class="month">MAR 2025</div>
+                </div>
+                <div class="text">
+                  Final Project Demo Submission
+                  <br>
+                  <a href="sample.pdf" class="btn-download" download><i class="fas fa-download"></i>Click Here</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+    <section class="partners-section">
+    
+
+    <div class="logo-carousel">
+      <div class="carousel-track">
+        <!-- Original Logos -->
+        <a href="https://www.mponline.gov.in" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023443data-gov.png" alt="MP Online" />
+          <p>MP Online Limited</p>
+        </a>
+
+        <a href="https://mp.mygov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023554my-gov.png" alt="MyGov MP" />
+          <p>MyGov MP</p>
+        </a>
+
+        <a href="https://www.standupmitra.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023606standup-india.png" alt="Stand Up India" />
+          <p>Stand Up India</p>
+        </a>
+
+        <a href="https://data.gov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023443data-gov.png" alt="Data Gov" />
+          <p>data.gov.in</p>
+        </a>
+
+        <a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023522india-gov.png" alt="Digital India" />
+          <p>Digital India</p>
+        </a>
+
+        <!-- Duplicates for infinite scroll -->
+        <a href="https://www.mponline.gov.in" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023537mp-online.png" alt="MP Online" />
+          <p>MP Online Limited</p>
+        </a>
+
+        <a href="https://mp.mygov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023554my-gov.png" alt="MyGov MP" />
+          <p>MyGov MP</p>
+        </a>
+
+        <a href="https://www.standupmitra.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023606standup-india.png" alt="Stand Up India" />
+          <p>Stand Up India</p>
+        </a>
+
+        <a href="https://data.gov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023443data-gov.png" alt="Data Gov" />
+          <p>data.gov.in</p>
+        </a>
+
+        <a href="https://www.digitalindia.gov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+          <img src="/MPSEDC3/29072020023522india-gov.png" alt="Digital India" />
+          <p>Digital India</p>
+        </a>
+      </div>
+    </div>
+  </section>
+   <!-- Main Footer -->
+
+  <div class="foot">
+  <footer class="footer">
+    <div class="container">
+      <div class="row text-start">
+        <!-- Column 1 -->
+        <div class="col-md-3 col-sm-6">
+  <h5>Important Links</h5>
+  <ul>
+    <li><a href="https://www.cdac.in" target="_blank"><i class="fas fa-microchip"></i> Centre for Development of Advanced Computing (C-DAC)</a></li>
+    <li><a href="https://mp.gov.in" target="_blank"><i class="fas fa-globe"></i> Govt. of Madhya Pradesh</a></li>
+    <li><a href="https://www.cert-in.org.in" target="_blank"><i class="fas fa-shield-alt"></i> Indian Computer Emergency Response Team</a></li>
+    <li><a href="https://www.meity.gov.in" target="_blank"><i class="fas fa-code"></i> Ministry of Electronics & IT (GoI)</a></li>
+    <li><a href="https://cmhelpline.mp.gov.in" target="_blank"><i class="fas fa-headset"></i> MP CM Helpline</a></li>
+    <li><a href="https://www.csc.gov.in" target="_blank"><i class="fas fa-user-cog"></i> MP Customer Service Centres (CSC)</a></li>
+  </ul>
+</div>
+
+<div class="col-md-3 col-sm-6">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li><a href="https://invest.mp.gov.in" target="_blank"><i class="fas fa-industry"></i> MP Dept. of Industry & Investment Promotion</a></li>
+    <li><a href="https://msme.mp.gov.in" target="_blank"><i class="fas fa-briefcase"></i> MP Dept. of Micro, Small & Medium Enterprises</a></li>
+    <li><a href="https://dst.mp.gov.in" target="_blank"><i class="fas fa-flask"></i> MP Dept. of Science and Technology</a></li>
+    <li><a href="https://finance.mp.gov.in" target="_blank"><i class="fas fa-coins"></i> MP Finance Department</a></li>
+    <li><a href="https://gad.mp.gov.in" target="_blank"><i class="fas fa-users-cog"></i> MP General Administration Department</a></li>
+  </ul>
+</div>
+
+<div class="col-md-3 col-sm-6">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li><a href="https://www.invest.mp.gov.in" target="_blank"><i class="fas fa-city"></i> MP Industrial Development Corporation</a></li>
+    <li><a href="#" target="_blank"><i class="fas fa-network-wired"></i> MP State Agency for Public Services</a></li>
+    <li><a href="#" target="_blank"><i class="fas fa-handshake"></i> MP Venture Finance Limited</a></li>
+    <li><a href="https://www.mponline.gov.in" target="_blank"><i class="fas fa-desktop"></i> MP Online Limited</a></li>
+    <li><a href="https://www.nic.in" target="_blank"><i class="fas fa-building"></i> NIC (India)</a></li>
+    <li><a href="https://mp.nic.in" target="_blank"><i class="fas fa-map-marker-alt"></i> NIC (MP)</a></li>
+  </ul>
+</div>
+
+<div class="col-md-3 col-sm-6">
+  <h5>&nbsp;</h5>
+  <ul>
+    <li><a href="https://www.nisg.org" target="_blank"><i class="fas fa-university"></i> National Institute for Smart Government</a></li>
+    <li><a href="https://india.gov.in" target="_blank"><i class="fas fa-link"></i> National Portal of India</a></li>
+    <li><a href="https://niti.gov.in" target="_blank"><i class="fas fa-lightbulb"></i> NITI Ayog</a></li>
+    <li><a href="https://www.stpi.in" target="_blank"><i class="fas fa-code-branch"></i> Software Technology Parks of India</a></li>
+    <li><a href="https://guidelines.gov.in" target="_blank"><i class="fas fa-gavel"></i> Website Guidelines</a></li>
+    <li><a href="#" target="_blank"><i class="fas fa-exclamation-triangle"></i> DWRS - Aapdasuraksha</a></li>
+    <li><a href="#" target="_blank"><i class="fas fa-drone"></i> Drone Initiative (DaaS)</a></li>
+    <li><a href="https://mpgeoportal.gov.in" target="_blank"><i class="fas fa-globe-africa"></i> MP Geoportal</a></li>
+  </ul>
+</div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    &copy; 2025 <strong>MPSeDC</strong>. All rights reserved.
+    <br/>
+    <a href="#">Disclaimer</a> |
+    <a href="#">Terms & Conditions</a> |
+    <a href="#">Copyright</a> |
+    <a href="#">Privacy</a> |
+    <a href="#">Feedback</a> |
+    <a href="#">Site Map</a>
+    <br/>
+    Designed & developed by Center of Excellence (CoE), <strong>MPSeDC</strong>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Simple JavaScript to show it's integrated
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Page loaded successfully! Projects and Updates sections are ready.');
+
+      // You can add more complex JS animations or interactions here.
+      // For example, if you wanted to load updates dynamically or have
+      // a "read more" functionality that expands text.
+    });
+  </script>
+</body>
+</html>

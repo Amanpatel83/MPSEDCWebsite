@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPSEDC - A Government of MP Undertaking</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #004d80;
+            --secondary-color: #f7a400;
+            --background-dark: #0f172a;
+            --text-light: #e2e8f0;
+            --accent-gray: #4a5568;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        .top-bar-link {
+            transition: color 0.3s ease;
+        }
+        
+        .top-bar-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .main-nav a {
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+        
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--secondary-color);
+        }
+
+        .main-nav a:hover::after, .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .dropdown-menu, .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .has-submenu:hover .dropdown-menu, .has-submenu:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .projects-section-box h2, .latest-updates-box h2 {
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .projects-section-box h2::after, .latest-updates-box h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 9999px;
+        }
+
+        /* Project Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-gray);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            transition: transform 0.3s ease;
+        }
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        .card-body {
+            position: relative;
+            z-index: 10;
+        }
+        .icon-circle {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 9999px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--secondary-color);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover .icon-circle {
+            transform: translateX(-50%) rotate(15deg);
+        }
+        .icon-circle i {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+        .know-more {
+            color: var(--secondary-color);
+            font-weight: 600;
+            position: relative;
+            padding-right: 20px;
+            transition: all 0.3s ease;
+        }
+        .know-more::after {
+            content: '→';
+            position: absolute;
+            right: 0;
+            transition: transform 0.3s ease;
+        }
+        .know-more:hover {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            padding: 2px 25px 2px 5px;
+            border-radius: 5px;
+        }
+        .know-more:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Latest Updates */
+        .updates-container {
+            max-height: 400px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-color) var(--card-bg);
+            padding-right: 10px;
+        }
+        .updates-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .updates-container::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+        .updates-container::-webkit-scrollbar-thumb {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            border: 2px solid var(--card-bg);
+        }
+        .update-item {
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .update-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-download {
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+        .btn-download:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Carousel */
+        .main-gallery-area {
+            position: relative;
+        }
+
+        .main-display {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            background-color: var(--card-bg);
+        }
+        
+        .main-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-display img.active-main {
+            opacity: 1;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--text-light);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-button { left: 1rem; }
+        .next-button { right: 1rem; }
+        #playPauseButton {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        #playPauseButton:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .carousel-container {
+            overflow-x: hidden;
+        }
+        .carousel {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+        .carousel img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel img.active {
+            border-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Partner Logos Carousel */
+        .partners-section {
+            overflow: hidden;
+            padding: 2rem 0;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--accent-gray);
+            border-bottom: 1px solid var(--accent-gray);
+        }
+        .partners-section h2 {
+            color: var(--secondary-color);
+        }
+        .logo-carousel {
+            display: flex;
+            width: 100%;
+        }
+        .carousel-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        .logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            margin: 0 2rem;
+            flex-shrink: 0;
+        }
+        .logo-item img {
+            max-width: 100%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+        .logo-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Mobile Nav */
+        .mobile-nav-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--background-dark);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+            z-index: 50;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        .mobile-nav-sidebar.active {
+            right: 0;
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 40;
+        }
+        .mobile-main-menu .has-submenu > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mobile-main-menu .dropdown-menu, .mobile-main-menu .mega-menu {
+            display: none;
+            background-color: var(--card-bg);
+            padding: 0.5rem;
+            margin-left: 1rem;
+            border-left: 2px solid var(--secondary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-gray-900 shadow-lg">
+        <div class="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center">
+            <!-- Top Bar -->
+            <div class="w-full flex flex-wrap justify-between items-center text-xs text-gray-400 py-2 border-b border-gray-700 md:border-none">
+                <div class="flex items-center space-x-2">
+                    <span class="text-white">Font Size:</span>
+                    <button id="decrease" class="p-1 px-2 rounded-md bg-gray-800 hover:bg-gray-700 transition top-bar-link">A–</button>
+                    <button id="default" class="p-1 px-2 rounded-md bg-gray-800 hover:bg-gray-700 transition top-bar-link">A</button>
+                    <button id="increase" class="p-1 px-2 rounded-md bg-gray-800 hover:bg-gray-700 transition top-bar-link">A+</button>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#" class="top-bar-link hover:text-white"><i class="fas fa-universal-access"></i> Screen Reader</a>
+                    <a href="#main-content" class="top-bar-link hover:text-white">Skip to Main Content</a>
+                    <a href="#navigation" class="top-bar-link hover:text-white">Skip to Navigation</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#" class="top-bar-link hover:text-white">IT Policy‑2023</a>
+                    <a href="#" class="top-bar-link hover:text-white">Security Audit Login</a>
+                    <a href="#" class="top-bar-link hover:text-white">CMS Login</a>
+                </div>
+                <div class="flex items-center space-x-2 mt-2 md:mt-0">
+                    <input type="text" placeholder="Search..." class="bg-gray-800 text-gray-200 border border-gray-700 rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-secondary-color text-xs w-28 md:w-40" />
+                    <button class="bg-secondary-color text-primary-color font-semibold rounded-full px-3 py-1 text-xs hover:bg-yellow-400 transition">हिंदी</button>
+                </div>
+            </div>
+            
+            <!-- Logo & Branding -->
+            <div class="w-full flex justify-between items-center py-4 md:py-2">
+                <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/333/fff?text=MPSEDC" alt="MPSEDC Logo" class="h-12 mr-4" />
+                    <div class="main-title hidden md:block">
+                        <h1 class="text-xl font-bold text-gray-100">M.P. STATE ELECTRONICS DEVELOPMENT CORPORATION LTD.</h1>
+                        <div class="text-sm text-gray-400">A Government of MP Undertaking</div>
+                    </div>
+                </div>
+                <img src="https://placehold.co/100x50/333/fff?text=Govt+Logo" alt="Govt Logo" class="h-12 mr-4" />
+                <div class="md:hidden">
+                    <button class="text-2xl text-white focus:outline-none" onclick="openMobileNav()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <nav id="navigation" class="main-nav hidden md:flex w-full justify-center">
+                <ul id="navList" class="flex space-x-6 text-gray-300 font-medium">
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li class="has-submenu">
+                        <a href="/LAST/page.html" class="flex items-center space-x-2"><i class="fas fa-building"></i> <span>About Us</span> <i class="fas fa-caret-down text-xs ml-1"></i></a>
+                        <ul class="dropdown-menu absolute bg-gray-800 text-gray-300 rounded-lg shadow-lg py-2 w-64 top-full left-0 z-50">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-dot-circle"></i> <span>Objective</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-bullseye"></i> <span>Mission</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-eye"></i> <span>Vision</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-sitemap"></i> <span>Organization</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-users-cog"></i> <span>Board of Directors</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-network-wired"></i> <span>Subsidiaries</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-user-tie"></i> <span>Key Managerial Personnel</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-id-card-alt"></i> <span>MPSEDC Registration Details</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-briefcase"></i> <span>Vacancy</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="flex items-center space-x-2"><i class="fas fa-scroll"></i> <span>Policies & Rules</span> <i class="fas fa-caret-down text-xs ml-1"></i></a>
+                        <ul class="dropdown-menu absolute bg-gray-800 text-gray-300 rounded-lg shadow-lg py-2 w-64 top-full left-0 z-50">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-book-open"></i> <span>IT Policy</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-file-invoice-dollar"></i> <span>Procurement Rules</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-balance-scale"></i> <span>Service Rules</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-user-shield"></i> <span>Security Guidelines</span></a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-users"></i> <span>HR Policies</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-clipboard-list"></i> <span>Circulars & Orders</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-hand-holding-heart"></i> <span>CSR</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-chart-line"></i> <span>Investment Portal</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-gavel"></i> <span>Tenders</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-question-circle"></i> <span>RTI</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-newspaper"></i> <span>Media</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                    <li><a href="#" class="flex items-center space-x-2"><i class="fas fa-phone-alt"></i> <span>Contact Us</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar and Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-sidebar" id="mobileNavSidebar">
+        <div class="flex justify-end p-4">
+            <button class="text-2xl text-white focus:outline-none" onclick="closeMobileNav()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-main-menu space-y-2 p-4 text-lg">
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="has-submenu" id="mobileAboutUs">
+                <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center justify-between">
+                    <div class="flex items-center space-x-2"><i class="fas fa-building"></i> <span>About Us</span></div>
+                    <i class="fas fa-caret-down text-sm"></i>
+                </a>
+                <div class="mega-menu grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <!-- Mega Menu Content -->
+                    <div class="mega-menu-column">
+                        <h4 class="text-sm font-bold text-secondary-color mb-2">Our Vision</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-bullseye"></i> <span>Mission & Values</span></a></li>
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-chart-pie"></i> <span>Strategic Goals</span></a></li>
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-lightbulb"></i> <span>Future Plans</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu-column">
+                        <h4 class="text-sm font-bold text-secondary-color mb-2">Leadership</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-users-cog"></i> <span>Board of Directors</span></a></li>
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-user-tie"></i> <span>Management Team</span></a></li>
+                            <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-sitemap"></i> <span>Organizational Chart</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="has-submenu" id="mobilePoliciesRules">
+                <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center justify-between">
+                    <div class="flex items-center space-x-2"><i class="fas fa-scroll"></i> <span>Policies & Rules</span></div>
+                    <i class="fas fa-caret-down text-sm"></i>
+                </a>
+                <ul class="dropdown-menu mt-2">
+                    <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-book-open"></i> <span>IT Policy</span></a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-file-invoice-dollar"></i> <span>Procurement Rules</span></a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-balance-scale"></i> <span>Service Rules</span></a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-user-shield"></i> <span>Security Guidelines</span></a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-600 rounded flex items-center space-x-2"><i class="fas fa-users"></i> <span>HR Policies</span></a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-clipboard-list"></i> <span>Circulars & Orders</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-hand-holding-heart"></i> <span>CSR</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-chart-line"></i> <span>Investment Portal</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-gavel"></i> <span>Tenders</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-question-circle"></i> <span>RTI</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-newspaper"></i> <span>Media</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 flex items-center space-x-2"><i class="fas fa-phone-alt"></i> <span>Contact Us</span></a></li>
+        </ul>
+    </div>
+
+    <main id="main-content" class="container mx-auto px-4 py-8">
+        <!-- About Section -->
+        <div class="mb-12 text-center">
+            <h1 class="text-3xl font-extrabold text-secondary-color mb-4">About MPSEDC</h1>
+            <p class="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed">
+                M.P. State Electronics Development Corporation Ltd. (MPSEDC) is a nodal agency under the Department of Science & Technology, Government of Madhya Pradesh, responsible for driving the state's IT, electronics, and e-governance initiatives. MPSEDC facilitates milestone-based project implementation and addresses regulatory and operational challenges in state-level IT and infrastructure projects, with a focus on enhancing digital governance and enabling investments in the technology sector.
+            </p>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="mb-12">
+            <div class="main-gallery-area w-full md:w-3/4 mx-auto relative mb-4">
+                <div class="main-display aspect-[16/9] relative">
+                    <button id="playPauseButton" aria-label="Play or pause auto-scroll" class="absolute top-4 left-4 z-10 text-white rounded-full p-2 bg-gray-800 bg-opacity-70 hover:bg-secondary-color transition">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="nav-button prev-button" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-button next-button" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="image-caption" id="imageCaption"></div>
+                </div>
+            </div>
+            
+            <div class="carousel-container overflow-hidden w-full md:w-3/4 mx-auto">
+                <div class="carousel flex gap-4 overflow-x-scroll no-scrollbar" id="carousel"></div>
+            </div>
+        </div>
+        
+        <!-- Projects and Latest Updates -->
+        <div class="flex flex-wrap -mx-4">
+            <!-- Projects Section -->
+            <div class="w-full lg:w-3/4 px-4 mb-8 lg:mb-0">
+                <section class="projects-section-box" id="projects">
+                    <h2 class="text-3xl font-bold mb-8"> ⚙️ Projects & Verticals</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        <!-- Project Card 1 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-gavel"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Adjudication Officer - IT Act</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Centre of Excellence</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 3 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">MPSSDI / GIS</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 4 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">IT Investment Promotion</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 5 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-database"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">EMC</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 6 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-file-signature"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">MP e-Tenders</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 7 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-server"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">State Data Center</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 8 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-network-wired"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">SWAN</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 9 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-id-card"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Parichai</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 10 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-fingerprint"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Aadhaar</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 11 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-vote-yea"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Election</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 12 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-folder-open"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Single Citizen Database</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 13 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Security Audit Portal</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 14 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">EMAIL PMU</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                        <!-- Project Card 15 -->
+                        <div class="card p-6 pt-12 rounded-xl text-center">
+                            <div class="icon-circle"><i class="fas fa-chart-bar"></i></div>
+                            <div class="card-body mt-4">
+                                <h5 class="text-xl font-semibold text-white">Data Analytics</h5>
+                                <a href="#" class="know-more mt-4 inline-block text-sm">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Latest Updates Section -->
+            <div class="w-full lg:w-1/4 px-4">
+                <section id="latest-updates" class="bg-gray-800 rounded-xl p-6 shadow-md">
+                    <h2 class="text-3xl font-bold mb-6">📢 Latest Updates</h2>
+                    <div class="updates-container space-y-4">
+                        <!-- Update Item 1 -->
+                        <div class="update-item p-4 rounded-lg flex items-start space-x-4">
+                            <div class="flex-shrink-0 text-center">
+                                <div class="text-xl font-bold text-secondary-color">26</div>
+                                <div class="text-sm text-gray-400">JUN 2025</div>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-lg leading-snug">Register for Simhastha Tech Hackathon</div>
+                                <a href="#" class="btn-download text-sm flex items-center space-x-1 mt-2">
+                                    <i class="fas fa-download"></i><span>Click Here</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Update Item 2 -->
+                        <div class="update-item p-4 rounded-lg flex items-start space-x-4">
+                            <div class="flex-shrink-0 text-center">
+                                <div class="text-xl font-bold text-secondary-color">3</div>
+                                <div class="text-sm text-gray-400">APR 2025</div>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-lg leading-snug">AI Innovation, State Consultation & UI/UX Workshop</div>
+                                <a href="#" class="btn-download text-sm flex items-center space-x-1 mt-2">
+                                    <i class="fas fa-download"></i><span>Click Here</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Update Item 3 -->
+                        <div class="update-item p-4 rounded-lg flex items-start space-x-4">
+                            <div class="flex-shrink-0 text-center">
+                                <div class="text-xl font-bold text-secondary-color">30</div>
+                                <div class="text-sm text-gray-400">MAR 2025</div>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-lg leading-snug">Yearly Performance Assessment – Intern Batch 3 & 4</div>
+                                <a href="#" class="btn-download text-sm flex items-center space-x-1 mt-2">
+                                    <i class="fas fa-download"></i><span>Click Here</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Update Item 4 -->
+                        <div class="update-item p-4 rounded-lg flex items-start space-x-4">
+                            <div class="flex-shrink-0 text-center">
+                                <div class="text-xl font-bold text-secondary-color">18</div>
+                                <div class="text-sm text-gray-400">MAR 2025</div>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-lg leading-snug">Result – Campus Recruitment Drive</div>
+                                <a href="#" class="btn-download text-sm flex items-center space-x-1 mt-2">
+                                    <i class="fas fa-download"></i><span>Click Here</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Update Item 5 -->
+                        <div class="update-item p-4 rounded-lg flex items-start space-x-4">
+                            <div class="flex-shrink-0 text-center">
+                                <div class="text-xl font-bold text-secondary-color">7</div>
+                                <div class="text-sm text-gray-400">MAR 2025</div>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-lg leading-snug">Final Project Demo Submission</div>
+                                <a href="#" class="btn-download text-sm flex items-center space-x-1 mt-2">
+                                    <i class="fas fa-download"></i><span>Click Here</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Partners Section -->
+    <section class="partners-section mt-12">
+        <div class="container mx-auto">
+            <h2 class="text-center text-2xl font-bold mb-6">Our Partners</h2>
+            <div class="logo-carousel">
+                <div class="carousel-track">
+                    <a href="https://www.mponline.gov.in" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=MP+Online" alt="MP Online" />
+                    </a>
+                    <a href="https://mp.mygov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=MyGov+MP" alt="MyGov MP" />
+                    </a>
+                     <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+3" alt="Partner 3" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+4" alt="Partner 4" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+5" alt="Partner 5" />
+                    </a>
+                     <!-- Duplicated items for seamless scrolling -->
+                    <a href="https://www.mponline.gov.in" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=MP+Online" alt="MP Online" />
+                    </a>
+                    <a href="https://mp.mygov.in/" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=MyGov+MP" alt="MyGov MP" />
+                    </a>
+                     <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+3" alt="Partner 3" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+4" alt="Partner 4" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="logo-item">
+                        <img src="https://placehold.co/150x80/28557e/fff?text=Partner+5" alt="Partner 5" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 M.P. STATE ELECTRONICS DEVELOPMENT CORPORATION LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Navigation ---
+        function openMobileNav() {
+            document.getElementById('mobileNavSidebar').classList.add('active');
+            document.getElementById('mobileNavOverlay').style.display = 'block';
+        }
+        function closeMobileNav() {
+            document.getElementById('mobileNavSidebar').classList.remove('active');
+            document.getElementById('mobileNavOverlay').style.display = 'none';
+        }
+
+        // Toggle sub-menus for mobile
+        document.querySelectorAll('.mobile-main-menu .has-submenu > a').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                const parentLi = this.closest('li.has-submenu');
+                const dropdown = parentLi.querySelector('.dropdown-menu') || parentLi.querySelector('.mega-menu');
+                
+                // Close other open submenus/mega-menus
+                document.querySelectorAll('.mobile-main-menu .has-submenu.open').forEach(openLi => {
+                    if (openLi !== parentLi) {
+                        openLi.classList.remove('open');
+                        const openDropdown = openLi.querySelector('.dropdown-menu') || openLi.querySelector('.mega-menu');
+                        if (openDropdown) {
+                            openDropdown.style.display = 'none';
+                        }
+                    }
+                });
+
+                parentLi.classList.toggle('open');
+                if (dropdown) {
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+        
+        document.getElementById('mobileNavOverlay').addEventListener('click', closeMobileNav);
+
+        // --- Font Size Accessibility ---
+        const fontSizeButtons = {
+            increase: document.getElementById('increase'),
+            decrease: document.getElementById('decrease'),
+            default: document.getElementById('default'),
+        };
+        const bodyElement = document.body;
+        const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+        function adjustFontSize(change) {
+            let currentSize = parseFloat(getComputedStyle(bodyElement).fontSize);
+            bodyElement.style.fontSize = (currentSize + change) + 'px';
+        }
+
+        fontSizeButtons.increase.addEventListener('click', () => adjustFontSize(2));
+        fontSizeButtons.decrease.addEventListener('click', () => adjustFontSize(-2));
+        fontSizeButtons.default.addEventListener('click', () => {
+            bodyElement.style.fontSize = ''; // Reset to default
+        });
+
+        // --- Image Carousel ---
+        const carousel = document.getElementById("carousel");
+        const mainDisplay = document.querySelector(".main-display");
+        const playPauseButton = document.getElementById("playPauseButton");
+        const playPauseIcon = playPauseButton.querySelector('i');
+        const imageCaption = document.getElementById("imageCaption");
+        
+        const imagesData = [
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Ujjain+Tech+Hackathon", alt: "Ujjain Tech Hackathon Event" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=IT+Park+Bhopal", alt: "IT Park in Bhopal" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=IT+Park+Indore", alt: "IT Park in Indore" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Gwalior+Malanpur", alt: "Gwalior Malanpur Banner" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Indore+Sinhasa", alt: "Indore Sinhasa Banner" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Technology+Hub", alt: "Technology Hub showcasing seamless integration" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Digital+Madhya+Pradesh", alt: "A captivating blend of colors and geometric shapes representing digital India" },
+            { src: "https://placehold.co/1280x720/004d80/fff?text=Innovation+Campus", alt: "A modern innovation campus" }
+        ];
+
+        let currentIndex = 0;
+        const autoScrollInterval = 5000;
+        let autoScrollTimer;
+        let isAutoScrolling = true;
+
+        function createCarouselImages() {
+            carousel.innerHTML = '';
+            imagesData.forEach((img, idx) => {
+                const thumb = document.createElement('img');
+                thumb.src = img.src;
+                thumb.alt = img.alt;
+                thumb.dataset.index = idx;
+                thumb.classList.add('w-24', 'h-16', 'object-cover', 'rounded-md', 'cursor-pointer', 'border-2', 'border-transparent', 'transition', 'hover:border-secondary-color');
+                thumb.addEventListener('click', () => {
+                    currentIndex = idx;
+                    updateGallery();
+                    resetAutoScroll();
+                });
+                carousel.appendChild(thumb);
+            });
+        }
+        
+        function updateGallery() {
+            const thumbnailImages = carousel.querySelectorAll("img");
+            if (thumbnailImages.length === 0) return;
+
+            // Remove old main image
+            const oldMainImg = mainDisplay.querySelector('img.active-main');
+            if (oldMainImg) {
+                oldMainImg.style.opacity = 0;
+                setTimeout(() => oldMainImg.remove(), 500); // Wait for transition
+            }
+            
+            // Create and add new main image
+            const mainImg = document.createElement('img');
+            mainImg.src = imagesData[currentIndex].src;
+            mainImg.alt = imagesData[currentIndex].alt;
+            mainImg.classList.add('absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'object-cover', 'rounded-xl', 'opacity-0');
+            mainDisplay.prepend(mainImg); // Prepend so it's behind buttons
+            
+            // Force reflow for transition
+            mainImg.offsetHeight; 
+            mainImg.classList.add('active-main');
+
+            imageCaption.textContent = imagesData[currentIndex].alt;
+
+            thumbnailImages.forEach(img => img.classList.remove("active", 'border-secondary-color'));
+            thumbnailImages[currentIndex].classList.add("active", 'border-secondary-color');
+
+            // Scroll to center the active thumbnail
+            scrollActiveThumbnailIntoView();
+        }
+
+        function scrollActiveThumbnailIntoView() {
+            const activeThumb = carousel.querySelector("img.active");
+            if (activeThumb) {
+                const containerRect = carousel.parentElement.getBoundingClientRect();
+                const thumbRect = activeThumb.getBoundingClientRect();
+                const scrollOffset = (thumbRect.left + thumbRect.width / 2) - (containerRect.left + containerRect.width / 2);
+                carousel.parentElement.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+            }
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % imagesData.length;
+            updateGallery();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;
+            updateGallery();
+        }
+
+        function startAutoScroll() {
+            if (!isAutoScrolling) return;
+            clearInterval(autoScrollTimer);
+            autoScrollTimer = setInterval(nextSlide, autoScrollInterval);
+            playPauseIcon.classList.replace('fa-play', 'fa-pause');
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollTimer);
+            playPauseIcon.classList.replace('fa-pause', 'fa-play');
+        }
+
+        function toggleAutoScroll() {
+            isAutoScrolling = !isAutoScrolling;
+            isAutoScrolling ? startAutoScroll() : stopAutoScroll();
+        }
+
+        function resetAutoScroll() {
+            if (isAutoScrolling) {
+                startAutoScroll();
+            }
+        }
+
+        // Event listeners for carousel
+        document.querySelector(".prev-button").addEventListener('click', () => { prevSlide(); resetAutoScroll(); });
+        document.querySelector(".next-button").addEventListener('click', () => { nextSlide(); resetAutoScroll(); });
+        playPauseButton.addEventListener('click', toggleAutoScroll);
+        
+        window.addEventListener("load", () => {
+            createCarouselImages();
+            updateGallery();
+            startAutoScroll();
+        });
+    </script>
+</body>
+</html>
